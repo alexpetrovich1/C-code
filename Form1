@@ -1,0 +1,2735 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Text.RegularExpressions;
+
+namespace Petrovich
+{
+    public partial class Form1 : Form
+    {
+        public static SqlConnection sql_con = new SqlConnection();
+        public Form1()
+        {
+            InitializeComponent();
+            if (!Auto.admin_sa)
+            {
+                администрированиеToolStripMenuItem.Visible = false;
+
+            }
+            sql_con = Auto.sql_con;
+            /*
+             sql_con = new SqlConnection();
+             sql_con.ConnectionString = @"Server=QWER;Database=Clinic;User ID=sa;Password=12345";
+             sql_con.Open();
+            */
+            tabPage1.Parent = null;
+            tabPage2.Parent = null;
+            tabPage3.Parent = null;
+            tabPage4.Parent = null;
+            tabPage5.Parent = null;
+            tabPage6.Parent = null;
+            tabPage7.Parent = null;
+            tabPage8.Parent = null;
+            tabPage9.Parent = null;
+            tabPage10.Parent = null;
+            tabPage11.Parent = null;
+            tabPage12.Parent = null;
+            tabPage13.Parent = null;
+            
+            groupBox1.Hide();
+            groupBox2.Hide();
+            groupBox3.Hide();
+            groupBox4.Hide();
+        }
+
+        private void должностиToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            radioButton1.Checked = false;
+            radioButton2.Checked = false;
+            radioButton3.Checked = false;
+            radioButton4.Checked = false;
+            radioButton5.Checked = false;
+            radioButton6.Checked = false;
+            radioButton7.Checked = false;
+            radioButton8.Checked = false;
+            radioButton9.Checked = false;
+            radioButton10.Checked = false;
+            radioButton11.Checked = false;
+            radioButton12.Checked = false;
+            radioButton13.Checked = false;
+            radioButton14.Checked = false;
+            checkBox1.Checked = false;
+            checkBox2.Checked = false;
+            checkBox3.Checked = false;
+            checkBox4.Checked = false;
+            checkBox5.Checked = false;
+            comboBox1.DataSource = null;
+            comboBox2.DataSource = null;
+            comboBox3.DataSource = null;
+            comboBox4.DataSource = null;
+            comboBox5.DataSource = null;
+            comboBox6.DataSource = null;
+            comboBox7.DataSource = null;
+            comboBox8.DataSource = null;
+            comboBox9.DataSource = null;
+            comboBox10.DataSource = null;
+            comboBox11.DataSource = null;
+            comboBox12.DataSource = null;
+            comboBox13.DataSource = null;
+            comboBox14.DataSource = null;
+            comboBox15.DataSource = null;
+            comboBox16.DataSource = null;
+            comboBox17.DataSource = null;
+            comboBox18.DataSource = null;
+            comboBox19.DataSource = null;
+            comboBox20.DataSource = null;
+            comboBox21.DataSource = null;
+            comboBox22.DataSource = null;
+            comboBox23.DataSource = null;
+            comboBox24.DataSource = null;
+            comboBox25.DataSource = null;
+            comboBox26.DataSource = null;
+            try
+            {
+                tabPage1.Parent = tabControl1;
+                tabPage2.Parent = null;
+                tabPage3.Parent = null;
+                tabPage4.Parent = null;
+                tabPage5.Parent = null;
+                tabPage6.Parent = null;
+                tabPage7.Parent = null;
+                tabPage8.Parent = null;
+                tabPage9.Parent = null;
+                tabPage10.Parent = null;
+                tabPage11.Parent = null;
+                tabPage12.Parent = null;
+                tabPage13.Parent = null;
+                DataSet Position = new DataSet("Position");
+                SqlDataAdapter _Position_adapter;
+                _Position_adapter = new SqlDataAdapter("Select Post_code_position as [№], Job_title as [Наименование должности], Salary as Оклад from Position", sql_con);
+                _Position_adapter.Fill(Position, "Должность");
+                dataGridView1.DataSource = Position.Tables["Должность"];
+                this.dataGridView1.Columns["№"].Visible = false;
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+            }
+        }
+
+        private void услугиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            radioButton1.Checked = false;
+            radioButton2.Checked = false;
+            radioButton3.Checked = false;
+            radioButton4.Checked = false;
+            radioButton5.Checked = false;
+            radioButton6.Checked = false;
+            radioButton7.Checked = false;
+            radioButton8.Checked = false;
+            radioButton9.Checked = false;
+            radioButton10.Checked = false;
+            radioButton11.Checked = false;
+            radioButton12.Checked = false;
+            radioButton13.Checked = false;
+            radioButton14.Checked = false;
+
+            checkBox1.Checked = false;
+            checkBox2.Checked = false;
+            checkBox3.Checked = false;
+            checkBox4.Checked = false;
+            checkBox5.Checked = false;
+            comboBox1.DataSource = null;
+            comboBox2.DataSource = null;
+            comboBox3.DataSource = null;
+            comboBox4.DataSource = null;
+            comboBox5.DataSource = null;
+            comboBox6.DataSource = null;
+            comboBox7.DataSource = null;
+            comboBox8.DataSource = null;
+            comboBox9.DataSource = null;
+            comboBox10.DataSource = null;
+            comboBox11.DataSource = null;
+            comboBox12.DataSource = null;
+            comboBox13.DataSource = null;
+            comboBox14.DataSource = null;
+            comboBox15.DataSource = null;
+            comboBox16.DataSource = null;
+            comboBox17.DataSource = null;
+            comboBox18.DataSource = null;
+            comboBox19.DataSource = null;
+            comboBox20.DataSource = null;
+            comboBox21.DataSource = null;
+            comboBox22.DataSource = null;
+            comboBox23.DataSource = null;
+            comboBox24.DataSource = null;
+            comboBox25.DataSource = null;
+            comboBox26.DataSource = null;
+            try
+            {
+                tabPage1.Parent = null;
+                tabPage2.Parent = tabControl1;
+                tabPage3.Parent = null;
+                tabPage4.Parent = null;
+                tabPage5.Parent = null;
+                tabPage6.Parent = null;
+                tabPage7.Parent = null;
+                tabPage8.Parent = null;
+                tabPage9.Parent = null;
+                tabPage10.Parent = null;
+                tabPage11.Parent = null;
+                tabPage12.Parent = null;
+                tabPage13.Parent = null;
+                DataSet Serrvices = new DataSet("Serrvices");
+                SqlDataAdapter _Serrvices_adapter;
+                _Serrvices_adapter = new SqlDataAdapter("Select Post_code_Services as [№], Name_services as [Наименование услуги], Cast_of as [Стоимость]"
+                                                           + "from Serrvices", sql_con);
+                _Serrvices_adapter.Fill(Serrvices, "Услуги");
+                dataGridView1.DataSource = Serrvices.Tables["Услуги"];
+                this.dataGridView1.Columns["№"].Visible = false;
+            }
+            catch (SqlException ex)
+            { MessageBox.Show(ex.Message, "Ошибка на сервере"); }
+        }
+
+        private void специализацииToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            
+            try
+            {
+                tabPage1.Parent = null;
+                tabPage2.Parent = null;
+                tabPage3.Parent = null;
+                tabPage4.Parent = tabControl1;
+                tabPage5.Parent = null;
+                tabPage6.Parent = null;
+                tabPage7.Parent = null;
+                tabPage8.Parent = null;
+                tabPage9.Parent = null;
+                tabPage10.Parent = null;
+                tabPage11.Parent = null;
+                tabPage12.Parent = null;
+                tabPage13.Parent = null;
+                DataSet Specification = new DataSet("Specification");
+                SqlDataAdapter _Specification_adapter;
+                _Specification_adapter = new SqlDataAdapter("Select Post_code_Specification as [№], Name_specification as [Наименование специализации]"
+                                                            + "from Specification", sql_con);
+                _Specification_adapter.Fill(Specification, "Специализация");
+                dataGridView1.DataSource = Specification.Tables["Специализация"];
+                this.dataGridView1.Columns["№"].Visible = false;
+            }
+            catch (SqlException ex)
+            { MessageBox.Show(ex.Message, "Ошибка на сервере"); }
+        }
+
+        private void участкиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                tabPage1.Parent = null;
+                tabPage2.Parent = null;
+                tabPage3.Parent = null;
+                tabPage4.Parent = null;
+                tabPage5.Parent = null;
+                tabPage6.Parent = null;
+                tabPage7.Parent = null;
+                tabPage8.Parent = null;
+                tabPage9.Parent = null;
+                tabPage10.Parent = null;
+                tabPage11.Parent = null;
+                tabPage12.Parent = null;
+                tabPage13.Parent = null;
+                DataSet Lot = new DataSet("Lot");
+                SqlDataAdapter _Lot_adapter;
+                _Lot_adapter = new SqlDataAdapter("Select Post_code_Lot as [№], Number_lot as [Номер участка] "
+                                                            + " from Lot", sql_con);
+                _Lot_adapter.Fill(Lot, "Участок");
+                dataGridView1.DataSource = Lot.Tables["Участок"];
+                this.dataGridView1.Columns["№"].Visible = false;
+            }
+            catch (SqlException ex)
+            { MessageBox.Show(ex.Message, "Ошибка на сервере"); }
+        }
+
+        private void персоналToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            radioButton1.Checked = false;
+            radioButton2.Checked = false;
+            radioButton3.Checked = false;
+            radioButton4.Checked = false;
+            radioButton5.Checked = false;
+            radioButton6.Checked = false;
+            radioButton7.Checked = false;
+            radioButton8.Checked = false;
+            radioButton9.Checked = false;
+            radioButton10.Checked = false;
+            radioButton11.Checked = false;
+            radioButton12.Checked = false;
+            radioButton13.Checked = false;
+            radioButton14.Checked = false;
+            checkBox1.Checked = false;
+            checkBox2.Checked = false;
+            checkBox3.Checked = false;
+            checkBox4.Checked = false;
+            checkBox5.Checked = false;
+            comboBox1.DataSource = null;
+            comboBox2.DataSource = null;
+            comboBox3.DataSource = null;
+            comboBox4.DataSource = null;
+            comboBox5.DataSource = null;
+            comboBox6.DataSource = null;
+            comboBox7.DataSource = null;
+            comboBox8.DataSource = null;
+            comboBox9.DataSource = null;
+            comboBox10.DataSource = null;
+            comboBox11.DataSource = null;
+            comboBox12.DataSource = null;
+            comboBox13.DataSource = null;
+            comboBox14.DataSource = null;
+            comboBox15.DataSource = null;
+            comboBox16.DataSource = null;
+            comboBox17.DataSource = null;
+            comboBox18.DataSource = null;
+            comboBox19.DataSource = null;
+            comboBox20.DataSource = null;
+            comboBox21.DataSource = null;
+            comboBox22.DataSource = null;
+            comboBox23.DataSource = null;
+            comboBox24.DataSource = null;
+            comboBox25.DataSource = null;
+            comboBox26.DataSource = null;
+            try
+            {
+                tabPage1.Parent = null;
+                tabPage2.Parent = null;
+                tabPage3.Parent = tabControl1;
+                tabPage4.Parent = null;
+                tabPage5.Parent = null;
+                tabPage6.Parent = null;
+                tabPage7.Parent = null;
+                tabPage8.Parent = null;
+                tabPage9.Parent = null;
+                tabPage10.Parent = null;
+                tabPage11.Parent = null;
+                tabPage12.Parent = null;
+                tabPage13.Parent = null;
+                DataSet Person = new DataSet("Person");
+                SqlDataAdapter _Person_adapter;
+                _Person_adapter = new SqlDataAdapter("Select Post_code_Person as [№], Surname as [Фамилия], "
+                                                     + " Name as [Имя], Lastname as [Отчество], Number_pasport as [Номер паспорта], "
+                                                     + " Date_of_birth as [Дата рождения], Registration as [Прописка], Staj as [Стаж], "
+                                                     + " Name_specification as [Специализация] "
+                                                     + " From Person, Specification "
+                                                     + " where Person.FK_code_post_Specification = Specification.Post_code_Specification", sql_con);
+                _Person_adapter.Fill(Person, "Person");
+                dataGridView1.DataSource = Person.Tables["Person"];
+                this.dataGridView1.Columns["№"].Visible = false;
+            }
+            catch (SqlException ex)
+            { MessageBox.Show(ex.Message, "Ошибка на сервере"); }
+        }
+
+        private void улицыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            radioButton1.Checked = false;
+            radioButton2.Checked = false;
+            radioButton3.Checked = false;
+            radioButton4.Checked = false;
+            radioButton5.Checked = false;
+            radioButton6.Checked = false;
+            radioButton7.Checked = false;
+            radioButton8.Checked = false;
+            radioButton9.Checked = false;
+            radioButton10.Checked = false;
+            radioButton11.Checked = false;
+            radioButton12.Checked = false;
+            radioButton13.Checked = false;
+            radioButton14.Checked = false;
+            checkBox1.Checked = false;
+            checkBox2.Checked = false;
+            checkBox3.Checked = false;
+            checkBox4.Checked = false;
+            checkBox5.Checked = false;
+            comboBox1.DataSource = null;
+            comboBox2.DataSource = null;
+            comboBox3.DataSource = null;
+            comboBox4.DataSource = null;
+            comboBox5.DataSource = null;
+            comboBox6.DataSource = null;
+            comboBox7.DataSource = null;
+            comboBox8.DataSource = null;
+            comboBox9.DataSource = null;
+            comboBox10.DataSource = null;
+            comboBox11.DataSource = null;
+            comboBox12.DataSource = null;
+            comboBox13.DataSource = null;
+            comboBox14.DataSource = null;
+            comboBox15.DataSource = null;
+            comboBox16.DataSource = null;
+            comboBox17.DataSource = null;
+            comboBox18.DataSource = null;
+            comboBox19.DataSource = null;
+            comboBox20.DataSource = null;
+            comboBox21.DataSource = null;
+            comboBox22.DataSource = null;
+            comboBox23.DataSource = null;
+            comboBox24.DataSource = null;
+            comboBox25.DataSource = null;
+            comboBox26.DataSource = null;
+            try
+            {
+                tabPage1.Parent = null;
+                tabPage2.Parent = null;
+                tabPage3.Parent = null;
+                tabPage4.Parent = null;
+                tabPage5.Parent = tabControl1;
+                tabPage6.Parent = null;
+                tabPage7.Parent = null;
+                tabPage8.Parent = null;
+                tabPage9.Parent = null;
+                tabPage10.Parent = null;
+                tabPage11.Parent = null;
+                tabPage12.Parent = null;
+                tabPage13.Parent = null;
+                DataSet Street = new DataSet("Street");
+                SqlDataAdapter _Street_adapter;
+                _Street_adapter = new SqlDataAdapter(" select Post_code_Street as [№], Name_street as [Название улицы], Number_lot as [Участок] "
+                                                     + " from Street, Lot "
+                                                     + " where Street.FK_post_code_Lot = Lot.Post_code_Lot", sql_con);
+                _Street_adapter.Fill(Street, "Улица");
+                dataGridView1.DataSource = Street.Tables["Улица"];
+                this.dataGridView1.Columns["№"].Visible = false;
+            }
+            catch (SqlException ex)
+            { MessageBox.Show(ex.Message, "Ошибка на сервере"); }
+        }
+
+        private void названиеКабинетовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                
+                tabPage1.Parent = null;
+                tabPage2.Parent = null;
+                tabPage3.Parent = null;
+                tabPage4.Parent = null;
+                tabPage5.Parent = null;
+                tabPage6.Parent = tabControl1;
+                tabPage7.Parent = null;
+                tabPage8.Parent = null;
+                tabPage9.Parent = null;
+                tabPage10.Parent = null;
+                tabPage11.Parent = null;
+                tabPage12.Parent = null;
+                tabPage13.Parent = null;
+                DataSet Nominal_cabinet = new DataSet("Nominal_cabinet");
+                SqlDataAdapter _Nominal_cabinet_adapter;
+                _Nominal_cabinet_adapter = new SqlDataAdapter("Select Post_code_Name_cabinet as [№], Name_cabinet as [Название кабинета] "
+                                                              + " from Nominal_cabinet", sql_con);
+                _Nominal_cabinet_adapter.Fill(Nominal_cabinet, "Название кабинетов");
+                dataGridView1.DataSource = Nominal_cabinet.Tables["Название кабинетов"];
+                this.dataGridView1.Columns["№"].Visible = false;
+            }
+            catch (SqlException ex)
+            { MessageBox.Show(ex.Message, "Ошибка на сервере"); }
+        }
+
+        private void графикРаботыКабинетовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                tabPage1.Parent = null;
+                tabPage2.Parent = null;
+                tabPage3.Parent = null;
+                tabPage4.Parent = null;
+                tabPage5.Parent = null;
+                tabPage6.Parent = null;
+                tabPage7.Parent = tabControl1;
+                tabPage8.Parent = null;
+                tabPage9.Parent = null;
+                tabPage10.Parent = null;
+                tabPage11.Parent = null;
+                tabPage12.Parent = null;
+                tabPage13.Parent = null;
+                DataSet Schedule_cabinet = new DataSet("Schedule_cabinet");
+                SqlDataAdapter _Schedule_cabinet_adapter;
+                _Schedule_cabinet_adapter = new SqlDataAdapter(" select Post_code_Schedule_cabinet as [№], Surname as [Фамилия], Name as [Имя], "
+                                                               + " Lastname as [Отчество],Number_cabinet as [Номер кабинета], Name_cabinet as [Название кабинета], "
+                                                               + " Name_day as [День недели], Time_start as [Начало работы], Time_stop as [Конец работы] "
+                                                               + " from Schedule_cabinet, Nominal_cabinet, Days_of_the_week, Person "
+                                                               + " where Schedule_cabinet.FK_post_code_Days_of_the_week = Days_of_the_week.Post_code_Days_of_the_week and "
+                                                               + " Schedule_cabinet.FK_post_code_Nominal_cabinet = Nominal_cabinet.Post_code_Name_cabinet and "
+                                                               + " Schedule_cabinet.FK_post_code_Person = Person.Post_code_Person", sql_con);
+                _Schedule_cabinet_adapter.Fill(Schedule_cabinet, "График кабинетов");
+                dataGridView1.DataSource = Schedule_cabinet.Tables["График кабинетов"];
+                this.dataGridView1.Columns["№"].Visible = false;
+            }
+            catch (SqlException ex)
+            { MessageBox.Show(ex.Message, "Ошибка на сервере"); }
+        }
+
+        private void платежиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                tabPage1.Parent = null;
+                tabPage2.Parent = null;
+                tabPage3.Parent = null;
+                tabPage4.Parent = null;
+                tabPage5.Parent = null;
+                tabPage6.Parent = null;
+                tabPage7.Parent = null;
+                tabPage8.Parent = null;
+                tabPage9.Parent = null;
+                tabPage10.Parent = null;
+                tabPage11.Parent = null;
+                tabPage12.Parent = null;
+                tabPage13.Parent = null;
+                DataSet Payment = new DataSet("Payment");
+                SqlDataAdapter _Payment_cabinet_adapter;
+                _Payment_cabinet_adapter = new SqlDataAdapter(" Select Post_code_Payment as [№], Surname as [Фамилия], Name as [Имя], Lastname as [Отчество], Name_services as [Наименование услуги], "
+                                                              + " Cast_of as [Стоимость услуги] "
+                                                              + " from Payment, Serrvices, Reception, Patient, Ticket "
+                                                              + " where Payment.FK_post_code_reception = Reception.Post_code_Reception and "
+                                                              + " Reception.FK_post_code_Serrvices = Serrvices.Post_code_Services and  "
+                                                              + " Reception.FK_post_code_Ticket = Ticket.Post_code_Ticket and "
+                                                              + " Ticket.FK_post_code_Patient = Patient.Post_code_Patient", sql_con);
+                _Payment_cabinet_adapter.Fill(Payment, "Платежи");
+                dataGridView1.DataSource = Payment.Tables["Платежи"];
+                this.dataGridView1.Columns["№"].Visible = false;
+            }
+            catch (SqlException ex)
+            { MessageBox.Show(ex.Message, "Ошибка на сервере"); }
+        }
+
+        private void приёмToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                tabPage1.Parent = null;
+                tabPage2.Parent = null;
+                tabPage3.Parent = null;
+                tabPage4.Parent = null;
+                tabPage5.Parent = null;
+                tabPage6.Parent = null;
+                tabPage7.Parent = null;
+                tabPage8.Parent = tabControl1;
+                tabPage9.Parent = null;
+                tabPage10.Parent = null;
+                tabPage11.Parent = null;
+                tabPage12.Parent = null;
+                tabPage13.Parent = null;
+                DataSet Reception = new DataSet("Reception");
+                SqlDataAdapter _Reception_adapter;
+                _Reception_adapter = new SqlDataAdapter(" select Post_code_Reception as [№], Surname as [Фамилия], Name as [Имя], Lastname as [Отчество], "
+                                                       + "   Number_ticket as [Номер талона], Name_services as [Наименование услуги], Name_cabinet as [Название кабинета] "
+                                                       + "  from Reception, Patient, Ticket, Serrvices, Schedule_cabinet, Nominal_cabinet "
+                                                       + "   where Reception.FK_post_code_Ticket = Ticket.Post_code_Ticket and  "
+                                                       + "   Reception.FK_post_code_Serrvices = Serrvices.Post_code_Services "
+                                                       + "   and Ticket.FK_post_code_Patient = Patient.Post_code_Patient and "
+                                                       + "   Ticket.FK_post_code_Schedule_cabinet = Schedule_cabinet.Post_code_Schedule_cabinet and "
+                                                       + "   Schedule_cabinet.FK_post_code_Nominal_cabinet = Nominal_cabinet.Post_code_Name_cabinet", sql_con);
+                _Reception_adapter.Fill(Reception, "Приём");
+                dataGridView1.DataSource = Reception.Tables["Приём"];
+                this.dataGridView1.Columns["№"].Visible = false;
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на сервере");
+            }
+        }
+
+        private void талоныToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                tabPage1.Parent = null;
+                tabPage2.Parent = null;
+                tabPage3.Parent = null;
+                tabPage4.Parent = null;
+                tabPage5.Parent = null;
+                tabPage6.Parent = null;
+                tabPage7.Parent = null;
+                tabPage8.Parent = null;
+                tabPage9.Parent = null;
+                tabPage10.Parent = tabControl1;
+                tabPage11.Parent = null;
+                tabPage12.Parent = null;
+                tabPage13.Parent = null;
+                DataSet Ticket = new DataSet("Ticket");
+                SqlDataAdapter _Ticket_adapter;
+                _Ticket_adapter = new SqlDataAdapter(" select Post_code_Ticket as [№], Number_ticket as [Номер талона], Number_cabinet as [Кабинет], Patient.Surname as [Фамилия пациента], "
+                                                     + " Time_ticket as [Время приёмa], Name_specification as [Специалист], Name_cabinet as [Наименование кабинета]"
+                                                     + " from Ticket, Schedule_cabinet, Person, Specification, Nominal_cabinet, Patient "
+                                                     + " where Ticket.FK_post_code_Schedule_cabinet = Schedule_cabinet.Post_code_Schedule_cabinet and "
+                                                     + " Schedule_cabinet.FK_post_code_Person = Person.Post_code_Person and "
+                                                     + " Person.FK_code_post_Specification = Specification.Post_code_Specification and  "
+                                                     + " Schedule_cabinet.FK_post_code_Nominal_cabinet = Nominal_cabinet.Post_code_Name_cabinet and Ticket.FK_post_code_Patient = Patient.Post_code_Patient", sql_con);
+                _Ticket_adapter.Fill(Ticket, "Талон");
+                dataGridView1.DataSource = Ticket.Tables["Талон"];
+                this.dataGridView1.Columns["№"].Visible = false;
+            }
+            catch (SqlException ex)
+            { MessageBox.Show(ex.Message, "Ошибка на сервере"); }
+        }
+
+        private void здоровыеПациентыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void должностиToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            add_Position f1 = new add_Position(sql_con);
+            f1.Show();
+        }
+
+        private void специализацииToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            add_Specification f2 = new add_Specification(sql_con);
+            f2.Show();
+        }
+
+        private void приёмСотрудникаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Add_Recruitment f3 = new Add_Recruitment(sql_con);
+            f3.Show();
+        }
+
+        private void закреплениеКабинетаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Schedule_cabinet f4 = new Schedule_cabinet(sql_con);
+            f4.Show();
+        }
+
+        private void выдачаТалонаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Ticket f5 = new Ticket(sql_con);
+            f5.Show();
+        }
+
+        private void улицуToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Street f6 = new Street(sql_con);
+            f6.Show();
+        }
+
+        private void участокToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lot f7 = new Lot(sql_con);
+            f7.Show();
+        }
+
+        private void закреплениеУчастковЗаПерсоналомToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Fixing_lot f8 = new Fixing_lot(sql_con);
+            f8.Show();
+        }
+
+        private void закреплёныеУчасткиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                tabPage1.Parent = null;
+                tabPage2.Parent = null;
+                tabPage3.Parent = null;
+                tabPage4.Parent = null;
+                tabPage5.Parent = null;
+                tabPage6.Parent = null;
+                tabPage7.Parent = null;
+                tabPage8.Parent = null;
+                tabPage9.Parent = tabControl1;
+                tabPage10.Parent = null;
+                tabPage11.Parent = null;
+                tabPage12.Parent = null;
+                tabPage13.Parent = null;
+                DataSet Fixing_lot = new DataSet("Fixing_lot");
+                SqlDataAdapter _Fixing_lot_adapter;
+                _Fixing_lot_adapter = new SqlDataAdapter(" select Post_code_Fixing_lot as [№], Surname as [Фамилия], Name as [Имя], "
+                                                       + "  Lastname as [Отчество], Number_lot as [Номер участка], Date_fixing as [Дата закрепления] "
+                                                       + "  from Fixing_lot, Person,Lot "
+                                                       + "  where Fixing_lot.FK_post_code_Lot = Lot.Post_code_Lot and  "
+                                                       + "  Fixing_lot.FK_post_code_Person = Person.Post_code_Person", sql_con);
+                _Fixing_lot_adapter.Fill(Fixing_lot, "Закреплённые участки");
+                dataGridView1.DataSource = Fixing_lot.Tables["Закреплённые участки"];
+                this.dataGridView1.Columns["№"].Visible = false;
+            }
+            catch (SqlException ex)
+            { MessageBox.Show(ex.Message, "Ошибка на сервере"); }
+        }
+
+        private void eckeubToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Serrvices f9 = new Serrvices(sql_con);
+            f9.Show();
+        }
+
+        private void дниНеделиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Days_of_the_week f10 = new Days_of_the_week(sql_con);
+            f10.Show();
+        }
+
+        private void приёмToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Reception f11 = new Reception(sql_con);
+            f11.Show();
+        }
+
+        private void пациентToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Patient f12 = new Patient(sql_con);
+            f12.Show();
+        }
+
+        private void выдачаТалоновToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Ticket f13 = new Ticket(sql_con);
+            f13.Show();
+        }
+
+        private void названиеКабинетовToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Nominal_cabinet f14 = new Nominal_cabinet(sql_con);
+            f14.Show();
+        }
+
+        private void пациентыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            radioButton1.Checked = false;
+            radioButton2.Checked = false;
+            radioButton3.Checked = false;
+            radioButton4.Checked = false;
+            radioButton5.Checked = false;
+            radioButton6.Checked = false;
+            radioButton7.Checked = false;
+            radioButton8.Checked = false;
+            radioButton9.Checked = false;
+            radioButton10.Checked = false;
+            radioButton11.Checked = false;
+            radioButton12.Checked = false;
+            radioButton13.Checked = false;
+            radioButton14.Checked = false;
+            checkBox1.Checked = false;
+            checkBox2.Checked = false;
+            checkBox3.Checked = false;
+            checkBox4.Checked = false;
+            checkBox5.Checked = false;
+            comboBox1.DataSource = null;
+            comboBox2.DataSource = null;
+            comboBox3.DataSource = null;
+            comboBox4.DataSource = null;
+            comboBox5.DataSource = null;
+            comboBox6.DataSource = null;
+            comboBox7.DataSource = null;
+            comboBox8.DataSource = null;
+            comboBox9.DataSource = null;
+            comboBox10.DataSource = null;
+            comboBox11.DataSource = null;
+            comboBox12.DataSource = null;
+            comboBox13.DataSource = null;
+            comboBox14.DataSource = null;
+            comboBox15.DataSource = null;
+            comboBox16.DataSource = null;
+            comboBox17.DataSource = null;
+            comboBox18.DataSource = null;
+            comboBox19.DataSource = null;
+            comboBox20.DataSource = null;
+            comboBox21.DataSource = null;
+            comboBox22.DataSource = null;
+            comboBox23.DataSource = null;
+            comboBox24.DataSource = null;
+            try
+            {
+                tabPage1.Parent = null;
+                tabPage2.Parent = null;
+                tabPage3.Parent = null;
+                tabPage4.Parent = null;
+                tabPage5.Parent = null;
+                tabPage6.Parent = null;
+                tabPage7.Parent = null;
+                tabPage8.Parent = null;
+                tabPage9.Parent = null;
+                tabPage10.Parent = null;
+                tabPage12.Parent = null;
+                tabPage11.Parent = tabControl1;
+                tabPage13.Parent = null;
+                DataSet Patient = new DataSet("Patient");
+                SqlDataAdapter _Patient_adapter;
+                _Patient_adapter = new SqlDataAdapter(" select Post_code_Patient as [№], Surname as [Фамилия], Name as [Имя], Lastname as [Отчество], "
+                                                      + "  Number_pasport as [Номер паспорта], Date_of_birth as [Дата рождения], "
+                                                      + "  Status_patient as [Статус пациента], Name_street as [Улица] "
+                                                      + "  from Patient, Street "
+                                                      + "  where Patient.FK_post_code_Street = Street.Post_code_Street", sql_con);
+                _Patient_adapter.Fill(Patient, "Пациент");
+                dataGridView1.DataSource = Patient.Tables["Пациент"];
+                this.dataGridView1.Columns["№"].Visible = false;
+            }
+            catch (SqlException ex)
+            { MessageBox.Show(ex.Message, "Ошибка на сервере"); }
+        }
+
+        private void закреплённыеКабинетыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                tabPage1.Parent = null;
+                tabPage2.Parent = null;
+                tabPage3.Parent = null;
+                tabPage4.Parent = null;
+                tabPage5.Parent = null;
+                tabPage6.Parent = null;
+                tabPage7.Parent = null;
+                tabPage8.Parent = null;
+                tabPage9.Parent = null;
+                tabPage10.Parent = null;
+                tabPage11.Parent = null;
+                tabPage13.Parent = null;
+                DataSet Schedule_cabinet = new DataSet("Schedule_cabinet");
+                SqlDataAdapter _Schedule_cabinet;
+                _Schedule_cabinet = new SqlDataAdapter(" select Post_code_Schedule_cabinet as [№], Number_cabinet as [Номер кабинета],  "
+                                                       + "  Surname as [Фамилия врача], Name_cabinet as [Наименование кабинета], "
+                                                       + "  Name_day as [День недели], Time_start as [Начало работы], Time_stop as [Конец работы]  "
+                                                       + "  from Schedule_cabinet,  Nominal_cabinet, Days_of_the_week, Person "
+                                                       + "  where Schedule_cabinet.FK_post_code_Days_of_the_week = Days_of_the_week.Post_code_Days_of_the_week and "
+                                                       + "  Schedule_cabinet.FK_post_code_Nominal_cabinet = Nominal_cabinet.Post_code_Name_cabinet and "
+                                                       + "  Schedule_cabinet.FK_post_code_Person = Person.Post_code_Person", sql_con);
+                _Schedule_cabinet.Fill(Schedule_cabinet, "Закреплённые кабинеты");
+                dataGridView1.DataSource = Schedule_cabinet.Tables["Закреплённые кабинеты"];
+                this.dataGridView1.Columns["№"].Visible = false;
+            }
+            catch (SqlException ex)
+            { MessageBox.Show(ex.Message, "Ошибка на сервере"); }
+        }
+
+        private void дниНеделиToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                tabPage1.Parent = null;
+                tabPage2.Parent = null;
+                tabPage3.Parent = null;
+                tabPage4.Parent = null;
+                tabPage5.Parent = null;
+                tabPage6.Parent = null;
+                tabPage7.Parent = null;
+                tabPage8.Parent = null;
+                tabPage9.Parent = null;
+                tabPage10.Parent = null;
+                tabPage11.Parent = null;
+                tabPage13.Parent = null;
+                DataSet Days_of_the_week = new DataSet("Days_of_the_week");
+                SqlDataAdapter _Days_of_the_week;
+                _Days_of_the_week = new SqlDataAdapter(" select Post_code_Days_of_the_week as [№], Name_day as [День], "
+                                                       + "  Time_start as [Начало работы], Time_stop as [Конец работы], Change as [Смена] "
+                                                       + "  from Days_of_the_week", sql_con);
+                _Days_of_the_week.Fill(Days_of_the_week, "Закреплённые кабинеты");
+                dataGridView1.DataSource = Days_of_the_week.Tables["Закреплённые кабинеты"];
+                this.dataGridView1.Columns["№"].Visible = false;
+            }
+            catch (SqlException ex)
+            { MessageBox.Show(ex.Message, "Ошибка на сервере"); }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (tabPage1.Parent != null)
+                {
+                    int current = 0;
+                    current = dataGridView1.CurrentRow.Index;
+                    //comboBox6.Text = dataGridView1.Rows[current].Cells["№"].Value.ToString();
+
+                    textBox1.Text = dataGridView1.Rows[current].Cells["Наименование должности"].Value.ToString();
+                    textBox2.Text = dataGridView1.Rows[current].Cells["Оклад"].Value.ToString();
+                }
+                else
+                    if (tabPage2.Parent != null)
+                    {
+                        int current = 0;
+                        current = dataGridView1.CurrentRow.Index;
+
+                        textBox3.Text = dataGridView1.Rows[current].Cells["Наименование услуги"].Value.ToString();
+                        textBox4.Text = dataGridView1.Rows[current].Cells["Стоимость"].Value.ToString();
+                    }
+                    else
+                        if (tabPage3.Parent != null)
+                        {
+                            int current = 0;
+                            current = dataGridView1.CurrentRow.Index;
+
+                            DataSet ds1 = new DataSet();
+                            SqlDataAdapter _Specification = new SqlDataAdapter("Select * from Specification", sql_con);
+                            _Specification.Fill(ds1, "Специализация");
+
+                            comboBox1.DataSource = ds1.Tables["Специализация"].DefaultView;
+                            comboBox1.ValueMember = ds1.Tables["Специализация"].Columns["Name_specification"].ToString();
+                            comboBox1.DisplayMember = ds1.Tables["Специализация"].Columns["Name_specification"].ToString();
+
+                            textBox6.Text = dataGridView1.Rows[current].Cells["Фамилия"].Value.ToString();
+                            textBox8.Text = dataGridView1.Rows[current].Cells["Имя"].Value.ToString();
+                            textBox7.Text = dataGridView1.Rows[current].Cells["Отчество"].Value.ToString();
+                            textBox9.Text = dataGridView1.Rows[current].Cells["Номер паспорта"].Value.ToString();
+                            dateTimePicker1.Text = dataGridView1.Rows[current].Cells["Дата рождения"].Value.ToString();
+                            textBox10.Text = dataGridView1.Rows[current].Cells["Прописка"].Value.ToString();
+                            textBox11.Text = dataGridView1.Rows[current].Cells["Стаж"].Value.ToString();
+                            comboBox1.Text = dataGridView1.Rows[current].Cells["Специализация"].Value.ToString();
+                        }
+                        else
+                            if (tabPage4.Parent != null)
+                            {
+                                int current = 0;
+                                current = dataGridView1.CurrentRow.Index;
+
+                                textBox5.Text = dataGridView1.Rows[current].Cells["Наименование специализации"].Value.ToString();
+                            }
+                            else
+                                if (tabPage5.Parent != null)
+                                {
+                                    int current = 0;
+                                    current = dataGridView1.CurrentRow.Index;
+
+                                    DataSet ds1 = new DataSet();
+                                    SqlDataAdapter _Lot = new SqlDataAdapter("Select * from Street, Lot where Street.FK_post_code_Lot = Lot.Post_code_Lot", sql_con);
+                                    _Lot.Fill(ds1, "Участок");
+
+                                    comboBox2.DataSource = ds1.Tables["Участок"].DefaultView;
+                                    comboBox2.ValueMember = ds1.Tables["Участок"].Columns["FK_post_code_lot"].ToString();
+                                    comboBox2.DisplayMember = ds1.Tables["Участок"].Columns["FK_post_code_lot"].ToString();
+
+                                    textBox12.Text = dataGridView1.Rows[current].Cells["Название улицы"].Value.ToString();
+                                    comboBox2.Text = dataGridView1.Rows[current].Cells["Участок"].Value.ToString();
+                                }
+                                else
+                                    if (tabPage6.Parent != null)
+                                    {
+                                        int current = 0;
+                                        current = dataGridView1.CurrentRow.Index;
+
+                                        textBox13.Text = dataGridView1.Rows[current].Cells["Название кабинета"].Value.ToString();
+                                    }
+                                    else
+                                        if (tabPage7.Parent != null)
+                                        {
+                                            int current = 0;
+                                            current = dataGridView1.CurrentRow.Index;
+
+                                            DataSet ds1 = new DataSet();
+                                            SqlDataAdapter _Nominal_cabinet = new SqlDataAdapter("Select * from Nominal_cabinet", sql_con);
+                                            _Nominal_cabinet.Fill(ds1, "Специализация");
+
+                                            comboBox3.DataSource = ds1.Tables["Специализация"].DefaultView;
+                                            comboBox3.ValueMember = ds1.Tables["Специализация"].Columns["Name_cabinet"].ToString();
+                                            comboBox3.DisplayMember = ds1.Tables["Специализация"].Columns["Name_cabinet"].ToString();
+
+                                            DataSet ds2 = new DataSet();
+                                            SqlDataAdapter _Name_day = new SqlDataAdapter("Select * from Days_of_the_week", sql_con);
+                                            _Name_day.Fill(ds2, "Day");
+
+                                            comboBox4.DataSource = ds2.Tables["Day"].DefaultView;
+                                            comboBox4.ValueMember = ds2.Tables["Day"].Columns["Name_day"].ToString();
+                                            comboBox4.DisplayMember = ds2.Tables["Day"].Columns["Name_day"].ToString();
+
+                                            textBox14.Text = dataGridView1.Rows[current].Cells["Фамилия"].Value.ToString();
+                                            textBox16.Text = dataGridView1.Rows[current].Cells["Имя"].Value.ToString();
+                                            textBox15.Text = dataGridView1.Rows[current].Cells["Отчество"].Value.ToString();
+                                            textBox17.Text = dataGridView1.Rows[current].Cells["Номер кабинета"].Value.ToString();
+                                            comboBox3.Text = dataGridView1.Rows[current].Cells["Название кабинета"].Value.ToString();
+                                            comboBox4.Text = dataGridView1.Rows[current].Cells["День недели"].Value.ToString();
+                                        }
+                                        else
+                                            if (tabPage8.Parent != null)
+                                            {
+                                                int current = 0;
+                                                current = dataGridView1.CurrentRow.Index;
+
+                                                DataSet ds1 = new DataSet();
+                                                SqlDataAdapter _Serrvices = new SqlDataAdapter("Select * from Serrvices", sql_con);
+                                                _Serrvices.Fill(ds1, "Serrvices");
+
+                                                comboBox9.DataSource = ds1.Tables["Serrvices"].DefaultView;
+                                                comboBox9.ValueMember = ds1.Tables["Serrvices"].Columns["Name_services"].ToString();
+                                                comboBox9.DisplayMember = ds1.Tables["Serrvices"].Columns["Name_services"].ToString();
+
+                                                textBox18.Text = dataGridView1.Rows[current].Cells["Фамилия"].Value.ToString();
+                                                textBox19.Text = dataGridView1.Rows[current].Cells["Имя"].Value.ToString();
+                                                textBox20.Text = dataGridView1.Rows[current].Cells["Отчество"].Value.ToString();
+                                                textBox21.Text = dataGridView1.Rows[current].Cells["Номер талона"].Value.ToString();
+                                                comboBox9.Text = dataGridView1.Rows[current].Cells["Наименование услуги"].Value.ToString();
+                                            }
+                                            else
+                                                if (tabPage9.Parent != null)
+                                                {
+                                                    int current = 0;
+                                                    current = dataGridView1.CurrentRow.Index;
+
+                                                    DataSet ds1 = new DataSet();
+                                                    SqlDataAdapter _Lot = new SqlDataAdapter("Select * from Lot", sql_con);
+                                                    _Lot.Fill(ds1, "Lot");
+
+                                                    comboBox5.DataSource = ds1.Tables["Lot"].DefaultView;
+                                                    comboBox5.ValueMember = ds1.Tables["Lot"].Columns["Number_lot"].ToString();
+                                                    comboBox5.DisplayMember = ds1.Tables["Lot"].Columns["Number_lot"].ToString();
+
+                                                    DataSet ds2 = new DataSet();
+                                                    SqlDataAdapter _Surname = new SqlDataAdapter("Select * from Person, Fixing_lot "
+                                                                                                  + " where Fixing_lot.FK_post_code_Person = Person.Post_code_Person", sql_con);
+                                                    _Surname.Fill(ds2, "Surname");
+
+                                                    comboBox10.DataSource = ds2.Tables["Surname"].DefaultView;
+                                                    comboBox10.ValueMember = ds2.Tables["Surname"].Columns["Surname"].ToString();
+                                                    comboBox10.DisplayMember = ds2.Tables["Surname"].Columns["Surname"].ToString();
+
+                                                    comboBox10.Text = dataGridView1.Rows[current].Cells["Фамилия"].Value.ToString();
+                                                    textBox24.Text = dataGridView1.Rows[current].Cells["Имя"].Value.ToString();
+                                                    textBox25.Text = dataGridView1.Rows[current].Cells["Отчество"].Value.ToString();
+                                                    comboBox5.Text = dataGridView1.Rows[current].Cells["Номер участка"].Value.ToString();
+                                                    dateTimePicker2.Text = dataGridView1.Rows[current].Cells["Дата закрепления"].Value.ToString();
+                                                }
+                                                else
+                                                    if (tabPage10.Parent != null)
+                                                    {
+                                                        int current = 0;
+                                                        current = dataGridView1.CurrentRow.Index;
+
+                                                        DataSet ds1 = new DataSet();
+                                                        SqlDataAdapter _Patient = new SqlDataAdapter("Select * from Patient", sql_con);
+                                                        _Patient.Fill(ds1, "Patient");
+
+                                                        comboBox11.DataSource = ds1.Tables["Patient"].DefaultView;
+                                                        comboBox11.ValueMember = ds1.Tables["Patient"].Columns["Surname"].ToString();
+                                                        comboBox11.DisplayMember = ds1.Tables["Patient"].Columns["Surname"].ToString();
+
+                                                        textBox26.Text = dataGridView1.Rows[current].Cells["Номер талона"].Value.ToString();
+                                                        textBox27.Text = dataGridView1.Rows[current].Cells["Кабинет"].Value.ToString();
+                                                        comboBox11.Text = dataGridView1.Rows[current].Cells["Фамилия пациента"].Value.ToString();
+                                                        dateTimePicker6.Text = dataGridView1.Rows[current].Cells["Время приёма"].Value.ToString();
+                                                    }
+                                                    else
+                                                        if (tabPage11.Parent != null)
+                                                        {
+                                                            int current = 0;
+                                                            current = dataGridView1.CurrentRow.Index;
+                                                            comboBox6.Items.Clear();
+                                                            comboBox6.Items.Add("Здоров");
+                                                            comboBox6.Items.Add("Болен");
+
+                                                            DataSet ds1 = new DataSet();
+                                                            SqlDataAdapter _Name_Street = new SqlDataAdapter("Select * from Street", sql_con);
+                                                            _Name_Street.Fill(ds1, "Name_Street");
+
+                                                            comboBox7.DataSource = ds1.Tables["Name_Street"].DefaultView;
+                                                            comboBox7.ValueMember = ds1.Tables["Name_Street"].Columns["Name_Street"].ToString();
+                                                            comboBox7.DisplayMember = ds1.Tables["Name_Street"].Columns["Name_Street"].ToString();
+
+                                                            textBox30.Text = dataGridView1.Rows[current].Cells["Фамилия"].Value.ToString();
+                                                            textBox32.Text = dataGridView1.Rows[current].Cells["Имя"].Value.ToString();
+                                                            textBox31.Text = dataGridView1.Rows[current].Cells["Отчество"].Value.ToString();
+                                                            textBox33.Text = dataGridView1.Rows[current].Cells["Номер паспорта"].Value.ToString();
+                                                            dateTimePicker3.Text = dataGridView1.Rows[current].Cells["Дата рождения"].Value.ToString();
+                                                            comboBox6.Text = dataGridView1.Rows[current].Cells["Статус пациента"].Value.ToString();
+                                                            comboBox7.Text = dataGridView1.Rows[current].Cells["Улица"].Value.ToString();
+                                                        }
+                                                        else
+                                                            if (tabPage13.Parent != null)
+                                                            {
+                                                                int current = 0;
+                                                                current = dataGridView1.CurrentRow.Index;
+
+                                                                textBox1.Text = dataGridView1.Rows[current].Cells["Наименование должности"].Value.ToString();
+
+                                                                DataSet ds_Patient = new DataSet();
+                                                                SqlDataAdapter _Patient = new SqlDataAdapter("Select * from Patient", sql_con);
+                                                                _Patient.Fill(ds_Patient, "Пациент");
+
+                                                                comboBox25.DataSource = ds_Patient.Tables["Пациент"].DefaultView;
+                                                                comboBox25.ValueMember = ds_Patient.Tables["Пациент"].Columns["Surname"].ToString();
+                                                                comboBox25.DisplayMember = ds_Patient.Tables["Пациент"].Columns["Surname"].ToString();
+
+                                                                DataSet ds_Diagnosis = new DataSet();
+                                                                SqlDataAdapter _Diagnosis = new SqlDataAdapter("Select Diagnosis.Name_Diagnos from Diagnosis", sql_con);
+                                                                _Diagnosis.Fill(ds_Diagnosis, "Name_Diagnos");
+
+                                                                comboBox26.DataSource = ds_Diagnosis.Tables["Name_Diagnos"].DefaultView;
+                                                                comboBox26.ValueMember = ds_Diagnosis.Tables["Name_Diagnos"].Columns["Name_Diagnos"].ToString();
+                                                                comboBox26.DisplayMember = ds_Diagnosis.Tables["Name_Diagnos"].Columns["Name_Diagnos"].ToString();
+                      
+
+                                                                textBox1.Text = dataGridView1.Rows[current].Cells["Статус процедуры"].Value.ToString();
+                                                                comboBox25.Text = dataGridView1.Rows[current].Cells["Пациент"].Value.ToString();
+                                                                comboBox26.Text = dataGridView1.Rows[current].Cells["Name_Diagnos"].Value.ToString();
+                                                            }
+            }
+            catch (SqlException) { }
+            catch (Exception) { }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //Редактирование услуги
+            try
+            {
+                int i = 0;
+                int current = 0;
+                current = dataGridView1.CurrentRow.Index;
+
+                SqlCommand cmd = new SqlCommand("Update_Serrvices", sql_con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlParameter new_param = new SqlParameter();
+                if (Regex.Match(textBox3.Text, "^[А-ИК-ЩЭ-Я][а-я]*$").Success == false)
+                {
+                    MessageBox.Show("Некоректно введено наименование услуги", "Ошибка");
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@Name_service", textBox3.Text);
+                    i++;
+                }
+
+                cmd.Parameters.AddWithValue("@Post_code_Services", dataGridView1.Rows[current].Cells["№"].Value.ToString());
+
+                if (Regex.Match(textBox4.Text, "^[0-9]*$").Success == false)
+                { MessageBox.Show("Некоректно введён оклад", "Ошибка"); }
+                else
+                {
+                    i++;
+                    cmd.Parameters.AddWithValue("@Cast_of", textBox4.Text);
+                }
+                if (i == 2)
+                {
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на сервере");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибк на клиенте");
+            }
+
+        }
+
+        private void tabPage7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label49_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //Редактирование должности
+            try
+            {
+                int i = 0;
+                int current = 0;
+                current = dataGridView1.CurrentRow.Index;
+
+                SqlCommand cmd = new SqlCommand("Update_Position", sql_con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlParameter new_param = new SqlParameter();
+                if (Regex.Match(textBox1.Text, "^[А-ИК-ЩЭ-Я][а-я]*$").Success == false)
+                {
+                    MessageBox.Show("Некоректно введено наименование должности", "Ошибка");
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@Job_title", textBox1.Text);
+                    i++;
+                }
+
+                cmd.Parameters.AddWithValue("@Post_code_position", dataGridView1.Rows[current].Cells["№"].Value.ToString());
+
+                if (Regex.Match(textBox2.Text, "^[0-9]*$").Success == false)
+                { MessageBox.Show("Некоректно введён оклад", "Ошибка"); }
+                else
+                {
+                    i++;
+                    cmd.Parameters.AddWithValue("@Salary", textBox2.Text);
+                }
+                if (i == 2)
+                {
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на сервере");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибк на клиенте");
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //Удаление должности
+            try
+            {
+                int current = 0;
+                current = dataGridView1.CurrentRow.Index;
+
+                SqlCommand cmd = new SqlCommand("Delete_Position", sql_con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlParameter new_param = new SqlParameter();
+
+                cmd.Parameters.AddWithValue("@Post_code_position", dataGridView1.Rows[current].Cells["№"].Value.ToString());
+
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на сервере");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибк на клиенте");
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            //Редактирование специализации
+            try
+            {
+                int i = 0;
+                int current = 0;
+                current = dataGridView1.CurrentRow.Index;
+                SqlCommand cmd = new SqlCommand("Update_Specification", sql_con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Post_code_Specification", dataGridView1.Rows[current].Cells["№"].Value.ToString());
+
+                if (Regex.Match(textBox5.Text, "^[А-ИК-ЩЭ-Я][а-я]*$").Success == false)
+                {
+                    MessageBox.Show("Некоректно введено наименование специализации", "Ошибка");
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@Name_specification", textBox5.Text);
+                    i++;
+                }
+
+                if (i == 1)
+                {
+                    cmd.ExecuteNonQuery();
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на сервере");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибк на клиенте");
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            //Удаление специализации
+            try
+            {
+                int current = 0;
+
+                current = dataGridView1.CurrentRow.Index;
+
+                SqlCommand cmd = new SqlCommand("Delete_Specification", sql_con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Post_code_Specification", dataGridView1.Rows[current].Cells["№"].Value.ToString());
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на сервере");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибк на клиенте");
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //Удаление Услуги
+            try
+            {
+                int current = 0;
+
+                current = dataGridView1.CurrentRow.Index;
+
+                SqlCommand cmd = new SqlCommand("Delete_Serrvices", sql_con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Post_code_Services", dataGridView1.Rows[current].Cells["№"].Value.ToString());
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на сервере");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на клиенте");
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            //редактирование персонала
+            int i = 0;
+            try
+            {
+                int current = 0;
+
+                current = dataGridView1.CurrentRow.Index;
+
+                SqlCommand cmd = new SqlCommand("Update_Person", sql_con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlParameter new_param = new SqlParameter();
+
+                if (Regex.Match(textBox6.Text, @"^[А-ИК-ЩЭ-Я][а-я]*$").Success == false)
+                { MessageBox.Show("Некоректно введена фамилия", "Ошибка"); }
+                else { cmd.Parameters.AddWithValue("@Surname", textBox6.Text); i++; }
+
+                if (Regex.Match(textBox8.Text, @"^[А-Я][а-я]*$").Success == false)
+                { MessageBox.Show("Некоректно введено имя", "Ошибка"); }
+                else { i++; cmd.Parameters.AddWithValue("@Name", textBox8.Text); }
+
+                if (Regex.Match(textBox7.Text, @"^[А-Я][а-я]*$").Success == false)
+                { MessageBox.Show("Некоректно введено очество", "Ошибка"); }
+                else { i++; cmd.Parameters.AddWithValue("@Lastname", textBox7.Text); }
+
+                if (Regex.Match(textBox9.Text, @"^([A-Z]{2})+([0-9]{7})").Success == false)
+                { MessageBox.Show("Некоректно введён номер паспорта", "Ошибка"); }
+                else { i++; cmd.Parameters.AddWithValue("@Number_pasport", textBox9.Text); }
+
+                cmd.Parameters.AddWithValue("@Date_of_birth", Convert.ToDateTime(dateTimePicker1.Text));
+
+                if (Regex.Match(textBox10.Text, @"^[ул.|ul.]+[a-zA-Zа-яА-ЯёЁ]+\s+[д.|d.]+\d+\s+[кв.|kv.]+\d+$").Success == false)
+                { MessageBox.Show("Некоректно введён адрес (ул.... д.... кв....)", "Ошибка"); }
+                else { i++; cmd.Parameters.AddWithValue("@Registration", textBox10.Text); }
+
+
+                if (Regex.Match(textBox11.Text, @"^[0-9]*$").Success == false)
+                { MessageBox.Show("Некоректно ввведен стаж", "Ошибка"); }
+                else { i++; cmd.Parameters.AddWithValue("@Staj", textBox11.Text); }
+
+                cmd.Parameters.AddWithValue("@FK_post_code_Specification", comboBox1.Text);
+
+                cmd.Parameters.AddWithValue("@Post_code_Person", dataGridView1.Rows[current].Cells["№"].Value.ToString());
+                if (i == 6)
+                {
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на сервере");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на клиенте");
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int current = 0;
+
+                current = dataGridView1.CurrentRow.Index;
+
+                SqlCommand cmd = new SqlCommand("Delete_Person", sql_con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlParameter new_param = new SqlParameter();
+
+                cmd.Parameters.AddWithValue("@Post_code_Person", dataGridView1.Rows[current].Cells["№"].Value.ToString());
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на сервере");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на клиенте");
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            //Редактирование улиц
+            int i = 0;
+            try
+            {
+                int current = 0;
+
+                current = dataGridView1.CurrentRow.Index;
+
+                SqlCommand cmd = new SqlCommand("Update_Street", sql_con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                if (Regex.Match(textBox12.Text, "^[А-Я][а-я]*$").Success == false)
+                { MessageBox.Show("Некоректно введено наименование улицы", "Ошибка"); }
+                else { i++; cmd.Parameters.AddWithValue("@Name_street", textBox12.Text); }
+
+                cmd.Parameters.AddWithValue("@Post_code_Street", dataGridView1.Rows[current].Cells["№"].Value.ToString());
+
+                cmd.Parameters.AddWithValue("@FK_post_code_Lot", comboBox2.Text);
+                if (i == 1)
+                {
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на сервере");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на клиенте");
+
+            }
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            //Удаление улиц
+            try
+            {
+                int current = 0;
+
+                current = dataGridView1.CurrentRow.Index;
+
+                SqlCommand cmd = new SqlCommand("Delete_Street", sql_con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Post_code_Street", dataGridView1.Rows[current].Cells["№"].Value.ToString());
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на сервере");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на клиенте");
+
+            }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            //Редактирование Название кабинетов
+            int i = 0;
+            try
+            {
+                int current = 0;
+
+                current = dataGridView1.CurrentRow.Index;
+
+                SqlCommand cmd = new SqlCommand("Update_Nominal_cabinet", sql_con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                if (Regex.Match(textBox13.Text, "^[А-Я][а-я]*$").Success == false)
+                { MessageBox.Show("Некоректно введено наименование кабинета", "Ошибка"); }
+                else { i++; cmd.Parameters.AddWithValue("@Name_cabinet", textBox13.Text); }
+
+                cmd.Parameters.AddWithValue("@Post_code_Name_cabinet", dataGridView1.Rows[current].Cells["№"].Value.ToString());
+                if (i == 1)
+                {
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на сервере");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на клиенте");
+            }
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            //Удаление названий кабинетов
+            try
+            {
+                int current = 0;
+
+                current = dataGridView1.CurrentRow.Index;
+
+                SqlCommand cmd = new SqlCommand("Delete_Nominal_cabinet", sql_con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Post_code_Nominal_cabinet", dataGridView1.Rows[current].Cells["№"].Value.ToString());
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на сервере");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на клиенте");
+            }
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            //Редактирование графика работы кабинетов
+            try
+            {
+                int i = 0;
+                int current = 0;
+
+                current = dataGridView1.CurrentRow.Index;
+
+                SqlCommand cmd = new SqlCommand("Update_Schedule_cabinet", sql_con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                if (Regex.Match(textBox17.Text, "^[0-9]*$").Success == false)
+                {
+                    MessageBox.Show("Некоректно введен номер кабинета", "Ошибка");
+                }
+                else
+                {
+                    i++;
+                    cmd.Parameters.AddWithValue("@Number_cabinet", Convert.ToInt32(textBox17.Text));
+                }
+
+                cmd.Parameters.AddWithValue("@FK_post_code_Nominal_cabinet", comboBox3.Text);
+                cmd.Parameters.AddWithValue("@FK_post_code_Person", textBox14.Text);
+                cmd.Parameters.AddWithValue("@FK_post_code_Days_of_the_week", comboBox4.Text);
+                cmd.Parameters.AddWithValue("@Post_code_Schedule_cabinet", dataGridView1.Rows[current].Cells["№"].Value.ToString());
+                if (i == 1)
+                {
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (SqlException ex)
+            { MessageBox.Show(ex.Message, "Ошибка на сервере"); }
+            catch (Exception ex)
+            { MessageBox.Show(ex.Message, "Ошибка на клиенте"); }
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            //Удаление из графика работы кабинетов
+            try
+            {
+                int current = 0;
+
+                current = dataGridView1.CurrentRow.Index;
+
+                SqlCommand cmd = new SqlCommand("Delete_Schedule_cabinet", sql_con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Post_code_Schedule_cabinet", dataGridView1.Rows[current].Cells["№"].Value.ToString());
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на сервере");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на клиенте");
+            }
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            //Редактирование приёма
+            try
+            {
+                int current = 0;
+
+                current = dataGridView1.CurrentRow.Index;
+
+                SqlCommand cmd = new SqlCommand("Update_Reception", sql_con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@FK_post_code_Ticket", textBox21.Text);
+                cmd.Parameters.AddWithValue("@FK_post_code_Serrvices", comboBox9.Text);
+                cmd.Parameters.AddWithValue("@Post_code_Reception", dataGridView1.Rows[current].Cells["№"].Value.ToString());
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            { MessageBox.Show(ex.Message, "Ошибка на сервере"); }
+            catch (Exception ex)
+            { MessageBox.Show(ex.Message, "Ошибка на клиенте"); }
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            //Удаление приёма
+            try
+            {
+                int current = 0;
+
+                current = dataGridView1.CurrentRow.Index;
+                SqlCommand cmd = new SqlCommand("Add_Payment", sql_con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@FK_post_code_reception", dataGridView1.Rows[current].Cells["№"].Value.ToString());
+                cmd.ExecuteNonQuery();
+
+                
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на сервере");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на клиенте");
+            }
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            //Редактирование закреплённых участков
+            try
+            {
+                int current = 0;
+
+                current = dataGridView1.CurrentRow.Index;
+
+                SqlCommand cmd = new SqlCommand("Update_Fixing_lot", sql_con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Date_fixing", Convert.ToDateTime(dateTimePicker2.Text));
+                cmd.Parameters.AddWithValue("@FK_post_code_Lot", comboBox5.Text);
+                cmd.Parameters.AddWithValue("@Post_code_Fixing_lot", dataGridView1.Rows[current].Cells["№"].Value.ToString());
+                cmd.Parameters.AddWithValue("@FK_post_code_Person", comboBox10.Text);
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            { MessageBox.Show(ex.Message, "Ошибка на сервере"); }
+            catch (Exception ex)
+            { MessageBox.Show(ex.Message, "Ошибка на клиенте"); }
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            //Удаление закреплённого участка
+            try
+            {
+                int current = 0;
+
+                current = dataGridView1.CurrentRow.Index;
+
+                SqlCommand cmd = new SqlCommand("Delete_Fixing_lot", sql_con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Post_code_Fixing_lot", dataGridView1.Rows[current].Cells["№"].Value.ToString());
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на сервере");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на клиенте");
+            }
+        }
+
+        private void button24_Click(object sender, EventArgs e)
+        {
+            //Редактирование талона
+            try
+            {
+                int current = 0;
+
+                current = dataGridView1.CurrentRow.Index;
+
+                SqlCommand cmd = new SqlCommand("Update_Ticket", sql_con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Time_ticket", Convert.ToDateTime(dateTimePicker6.Text));
+                cmd.Parameters.AddWithValue("@Number_ticket", textBox26.Text);
+                cmd.Parameters.AddWithValue("@FK_post_code_Schedule_cabinet", textBox27.Text);
+                cmd.Parameters.AddWithValue("@FK_post_code_Patient", comboBox11.Text);
+                cmd.Parameters.AddWithValue("@Post_code_Ticket", dataGridView1.Rows[current].Cells["№"].Value.ToString());
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            { MessageBox.Show(ex.Message, "Ошибка на сервере"); }
+            catch (Exception ex)
+            { MessageBox.Show(ex.Message, "Ошибка на клиенте"); }
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int current = 0;
+
+                current = dataGridView1.CurrentRow.Index;
+
+                SqlCommand cmd = new SqlCommand("Delete_Ticket", sql_con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Post_code_Ticket", dataGridView1.Rows[current].Cells["№"].Value.ToString());
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на сервере");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на клиенте");
+            }
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            //Редактирование пациентов
+            try
+            {
+                int i = 0;
+                int current = 0;
+
+                current = dataGridView1.CurrentRow.Index;
+
+                SqlCommand cmd = new SqlCommand("Update_Patient", sql_con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                if (Regex.Match(textBox30.Text, @"^[А-ИК-ЩЭ-Я][а-я]*$").Success == false)
+                { MessageBox.Show("Некоректно введена фамилия", "Ошибка"); }
+                else { cmd.Parameters.AddWithValue("@Surname", textBox30.Text); i++; }
+
+                if (Regex.Match(textBox32.Text, @"^[А-Я][а-я]*$").Success == false)
+                { MessageBox.Show("Некоректно введено имя", "Ошибка"); }
+                else { i++; cmd.Parameters.AddWithValue("@Name", textBox32.Text); }
+
+                if (Regex.Match(textBox31.Text, @"^[А-Я][а-я]*$").Success == false)
+                { MessageBox.Show("Некоректно введено очество", "Ошибка"); }
+                else { i++; cmd.Parameters.AddWithValue("@Lastname", textBox31.Text); }
+
+                if (Regex.Match(textBox33.Text, @"^([A-Z]{2})+([0-9]{7})").Success == false)
+                { MessageBox.Show("Некоректно введён номер паспорта", "Ошибка"); }
+                else { i++; cmd.Parameters.AddWithValue("@Number_pasport", textBox33.Text); }
+
+                cmd.Parameters.AddWithValue("@Date_of_birth", Convert.ToDateTime(dateTimePicker3.Text));
+
+                cmd.Parameters.AddWithValue("@Status_patient", comboBox6.Text);
+
+                cmd.Parameters.AddWithValue("@FK_post_code_Street", comboBox7.Text);
+
+                cmd.Parameters.AddWithValue("@Post_code_Patient", dataGridView1.Rows[current].Cells["№"].Value.ToString());
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            { MessageBox.Show(ex.Message, "Ошибка на сервере"); }
+            catch (Exception ex)
+            { MessageBox.Show(ex.Message, "Ошибка на клиенте"); }
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int current = 0;
+
+                current = dataGridView1.CurrentRow.Index;
+
+                SqlCommand cmd = new SqlCommand("Delete_Patient", sql_con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Post_code_Patient", dataGridView1.Rows[current].Cells["№"].Value.ToString());
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на сервере");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на клиенте");
+            }
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            //Редактирование закреплённых кабинетов
+            try
+            {
+                int i = 0;
+                int current = 0;
+
+                current = dataGridView1.CurrentRow.Index;
+
+                SqlCommand cmd = new SqlCommand("Update_Patient", sql_con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                if (Regex.Match(textBox30.Text, @"^[А-ИК-ЩЭ-Я][а-я]*$").Success == false)
+                { MessageBox.Show("Некоректно введена фамилия", "Ошибка"); }
+                else { cmd.Parameters.AddWithValue("@Surname", textBox30.Text); i++; }
+
+                if (Regex.Match(textBox32.Text, @"^[А-Я][а-я]*$").Success == false)
+                { MessageBox.Show("Некоректно введено имя", "Ошибка"); }
+                else { i++; cmd.Parameters.AddWithValue("@Name", textBox32.Text); }
+
+                if (Regex.Match(textBox31.Text, @"^[А-Я][а-я]*$").Success == false)
+                { MessageBox.Show("Некоректно введено очество", "Ошибка"); }
+                else { i++; cmd.Parameters.AddWithValue("@Lastname", textBox31.Text); }
+
+                if (Regex.Match(textBox33.Text, @"^([A-Z]{2})+([0-9]{7})").Success == false)
+                { MessageBox.Show("Некоректно введён номер паспорта", "Ошибка"); }
+                else { i++; cmd.Parameters.AddWithValue("@Number_pasport", textBox33.Text); }
+
+                cmd.Parameters.AddWithValue("@Date_of_birth", Convert.ToDateTime(dateTimePicker3.Text));
+
+                cmd.Parameters.AddWithValue("@Status_patient", comboBox6.Text);
+
+                cmd.Parameters.AddWithValue("@FK_post_code_Street", comboBox7.Text);
+
+                cmd.Parameters.AddWithValue("@Post_code_Patient", dataGridView1.Rows[current].Cells["№"].Value.ToString());
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            { MessageBox.Show(ex.Message, "Ошибка на сервере"); }
+            catch (Exception ex)
+            { MessageBox.Show(ex.Message, "Ошибка на клиенте"); }
+        }
+
+        private void дабавлениеПользователяToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Add_users f15 = new Add_users(sql_con);
+            f15.Show();
+        }
+
+        private void удалениеПользователяИзСистемыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            delete_users f16 = new delete_users(sql_con);
+            f16.Show();
+        }
+
+        private void раздачаПравToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            grand f19 = new grand(sql_con);
+            f19.Show();
+        }
+        private void comboBox8_SelectedIndexChanged(object sender, EventArgs e) { }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (checkBox1.Checked)
+                    groupBox1.Visible = true;
+                else
+                    groupBox1.Visible = false;
+
+                if (checkBox2.Checked)
+                    groupBox2.Visible = true;
+                else
+                    groupBox2.Visible = false;
+
+                if (checkBox3.Checked)
+                    tabPage12.Parent = tabControl1;
+                else
+                    tabPage12.Parent = null;
+
+                if (checkBox4.Checked)
+                    groupBox3.Visible = true;
+                else
+                    groupBox3.Visible = false;
+
+                if (checkBox5.Checked)
+                    groupBox4.Visible = true;
+                else
+                    groupBox4.Visible = false;
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (radioButton1.Checked==true)
+                {
+                    comboBox12.DataSource = null;
+                    comboBox13.DataSource = null;
+                    comboBox14.DataSource = null;
+                    comboBox15.DataSource = null;
+                    comboBox16.DataSource = null;
+                    comboBox17.DataSource = null;
+                    comboBox18.DataSource = null;
+                    comboBox19.DataSource = null;
+                    comboBox20.DataSource = null;
+                    comboBox21.DataSource = null;
+                    comboBox22.DataSource = null;
+                    comboBox23.DataSource = null;
+                    comboBox24.DataSource = null;
+                    comboBox25.DataSource = null;
+                    comboBox26.DataSource = null;
+                    radioButton1.Checked = true;
+                    radioButton2.Checked = false;
+
+                    comboBox8.DropDownStyle = ComboBoxStyle.DropDownList;
+
+                    DataSet ds1 = new DataSet();
+                    SqlDataAdapter _Position = new SqlDataAdapter("select Job_title "
+                                                                          + " from Position "
+                                                                            + " group by(Job_title)", sql_con);
+                    _Position.Fill(ds1, "Job_title");
+
+                    comboBox8.DataSource = ds1.Tables["Job_title"].DefaultView;
+                    comboBox8.ValueMember = ds1.Tables["Job_title"].Columns["Job_title"].ToString();
+                    comboBox8.DisplayMember = ds1.Tables["Job_title"].Columns["Job_title"].ToString();
+                }
+                else
+                    if (radioButton2.Checked)
+                    {
+                        comboBox8.DataSource = null;
+                        comboBox12.DataSource = null;
+                        comboBox13.DataSource = null;
+                        comboBox14.DataSource = null;
+                        comboBox15.DataSource = null;
+                        comboBox16.DataSource = null;
+                        comboBox17.DataSource = null;
+                        comboBox18.DataSource = null;
+                        comboBox19.DataSource = null;
+                        comboBox20.DataSource = null;
+                        comboBox21.DataSource = null;
+                        comboBox22.DataSource = null;
+                        comboBox23.DataSource = null;
+                        comboBox24.DataSource = null;
+                        comboBox25.DataSource = null;
+                        comboBox26.DataSource = null;
+                        comboBox12.DropDownStyle = ComboBoxStyle.DropDownList;
+                        DataSet ds2 = new DataSet();
+                        SqlDataAdapter _Salary = new SqlDataAdapter("select Salary "
+                                                                    + " from Position "
+                                                                    + " group by(Salary)", sql_con);
+                        _Salary.Fill(ds2, "Оклад");
+
+                        comboBox12.DataSource = ds2.Tables["Оклад"].DefaultView;
+                        comboBox12.ValueMember = ds2.Tables["Оклад"].Columns["Salary"].ToString();
+                        comboBox12.DisplayMember = ds2.Tables["Оклад"].Columns["Salary"].ToString();
+                    }
+                    else
+                        if (radioButton3.Checked)
+                        {
+                            comboBox8.DataSource = null;
+                            comboBox12.DataSource = null;
+                            comboBox14.DataSource = null;
+                            comboBox15.DataSource = null;
+                            comboBox16.DataSource = null;
+                            comboBox17.DataSource = null;
+                            comboBox18.DataSource = null;
+                            comboBox19.DataSource = null;
+                            comboBox20.DataSource = null;
+                            comboBox21.DataSource = null;
+                            comboBox22.DataSource = null;
+                            comboBox23.DataSource = null;
+                            comboBox24.DataSource = null;
+                            comboBox25.DataSource = null;
+                            comboBox26.DataSource = null;
+                            comboBox13.DropDownStyle = ComboBoxStyle.DropDownList;
+
+                            DataSet ds3 = new DataSet();
+                            SqlDataAdapter _Name_serrvices = new SqlDataAdapter("select Name_services "
+                                                                        + " from Serrvices "
+                                                                        + " group by(Name_services)", sql_con);
+                            _Name_serrvices.Fill(ds3, "Наименование услуги");
+
+                            comboBox13.DataSource = ds3.Tables["Наименование услуги"].DefaultView;
+                            comboBox13.ValueMember = ds3.Tables["Наименование услуги"].Columns["Name_services"].ToString();
+                            comboBox13.DisplayMember = ds3.Tables["Наименование услуги"].Columns["Name_services"].ToString();
+                        }
+                        else
+                            if (radioButton4.Checked)
+                            {
+                                comboBox8.DataSource = null;
+                                comboBox12.DataSource = null;
+                                comboBox13.DataSource = null;
+                                comboBox15.DataSource = null;
+                                comboBox16.DataSource = null;
+                                comboBox17.DataSource = null;
+                                comboBox18.DataSource = null;
+                                comboBox19.DataSource = null;
+                                comboBox20.DataSource = null;
+                                comboBox21.DataSource = null;
+                                comboBox22.DataSource = null;
+                                comboBox23.DataSource = null;
+                                comboBox24.DataSource = null;
+                                comboBox25.DataSource = null;
+                                comboBox26.DataSource = null;
+                                comboBox14.DropDownStyle = ComboBoxStyle.DropDownList;
+
+                                DataSet ds4 = new DataSet();
+                                SqlDataAdapter _Cast_of = new SqlDataAdapter("select Cast_of "
+                                                                            + " from Serrvices "
+                                                                            + " group by(Cast_of)", sql_con);
+                                _Cast_of.Fill(ds4, "Cast_of");
+
+                                comboBox14.DataSource = ds4.Tables["Cast_of"].DefaultView;
+                                comboBox14.ValueMember = ds4.Tables["Cast_of"].Columns["Cast_of"].ToString();
+                                comboBox14.DisplayMember = ds4.Tables["Cast_of"].Columns["Cast_of"].ToString();
+                            }
+                            else
+                                if (radioButton5.Checked)
+                                {
+                                    comboBox8.DataSource = null;
+                                    comboBox12.DataSource = null;
+                                    comboBox13.DataSource = null;
+                                    comboBox14.DataSource = null; 
+                                    comboBox16.DataSource = null;
+                                    comboBox17.DataSource = null;
+                                    comboBox18.DataSource = null;
+                                    comboBox19.DataSource = null;
+                                    comboBox20.DataSource = null;
+                                    comboBox21.DataSource = null;
+                                    comboBox22.DataSource = null;
+                                    comboBox23.DataSource = null;
+                                    comboBox24.DataSource = null;
+                                    comboBox25.DataSource = null;
+                                    comboBox26.DataSource = null;
+                                    comboBox15.DropDownStyle = ComboBoxStyle.DropDownList;
+
+                                    DataSet ds4 = new DataSet();
+                                    SqlDataAdapter _Surname = new SqlDataAdapter("select Surname "
+                                                                                 +" from Person, Specification "
+                                                                                 +" where Person.FK_code_post_Specification = Specification.Post_code_Specification "
+                                                                                 +" group by (Surname)", sql_con);
+                                    _Surname.Fill(ds4, "Surname");
+
+                                    comboBox15.DataSource = ds4.Tables["Surname"].DefaultView;
+                                    comboBox15.ValueMember = ds4.Tables["Surname"].Columns["Surname"].ToString();
+                                    comboBox15.DisplayMember = ds4.Tables["Surname"].Columns["Surname"].ToString();
+                                }
+                                else
+                                    if (radioButton6.Checked)
+                                    {
+                                        comboBox8.DataSource = null;
+                                        comboBox12.DataSource = null;
+                                        comboBox13.DataSource = null;
+                                        comboBox14.DataSource = null;
+                                        comboBox15.DataSource = null;
+                                        comboBox17.DataSource = null;
+                                        comboBox18.DataSource = null;
+                                        comboBox19.DataSource = null;
+                                        comboBox20.DataSource = null;
+                                        comboBox21.DataSource = null;
+                                        comboBox22.DataSource = null;
+                                        comboBox23.DataSource = null;
+                                        comboBox24.DataSource = null;
+                                        comboBox25.DataSource = null;
+                                        comboBox26.DataSource = null;
+                                        comboBox16.DropDownStyle = ComboBoxStyle.DropDownList;
+
+                                        DataSet ds4 = new DataSet();
+                                        SqlDataAdapter _Name = new SqlDataAdapter("select Name "
+                                                                                     + " from Person, Specification "
+                                                                                     + " where Person.FK_code_post_Specification = Specification.Post_code_Specification "
+                                                                                     + " group by (Name)", sql_con);
+                                        _Name.Fill(ds4, "Name");
+
+                                        comboBox16.DataSource = ds4.Tables["Name"].DefaultView;
+                                        comboBox16.ValueMember = ds4.Tables["Name"].Columns["Name"].ToString();
+                                        comboBox16.DisplayMember = ds4.Tables["Name"].Columns["Name"].ToString();
+                                    }
+                                    else
+                                        if (radioButton7.Checked)
+                                        {
+                                            comboBox8.DataSource = null;
+                                            comboBox12.DataSource = null;
+                                            comboBox13.DataSource = null;
+                                            comboBox14.DataSource = null;
+                                            comboBox15.DataSource = null;
+                                            comboBox16.DataSource = null;
+                                            comboBox18.DataSource = null;
+                                            comboBox19.DataSource = null;
+                                            comboBox20.DataSource = null;
+                                            comboBox21.DataSource = null;
+                                            comboBox22.DataSource = null;
+                                            comboBox23.DataSource = null;
+                                            comboBox24.DataSource = null;
+                                            comboBox25.DataSource = null;
+                                            comboBox26.DataSource = null;
+                                            comboBox17.DropDownStyle = ComboBoxStyle.DropDownList;
+
+                                            DataSet ds4 = new DataSet();
+                                            SqlDataAdapter _Lastname = new SqlDataAdapter("select Lastname "
+                                                                                         + " from Person, Specification "
+                                                                                         + " where Person.FK_code_post_Specification = Specification.Post_code_Specification "
+                                                                                         + " group by (Lastname)", sql_con);
+                                            _Lastname.Fill(ds4, "Lastname");
+
+                                            comboBox17.DataSource = ds4.Tables["Lastname"].DefaultView;
+                                            comboBox17.ValueMember = ds4.Tables["Lastname"].Columns["Lastname"].ToString();
+                                            comboBox17.DisplayMember = ds4.Tables["Lastname"].Columns["Lastname"].ToString();
+                                        }
+                                        else
+                                            if (radioButton8.Checked)
+                                            {
+                                                comboBox8.DataSource = null;
+                                                comboBox12.DataSource = null;
+                                                comboBox13.DataSource = null;
+                                                comboBox14.DataSource = null;
+                                                comboBox15.DataSource = null;
+                                                comboBox16.DataSource = null;
+                                                comboBox17.DataSource = null;
+                                                comboBox19.DataSource = null;
+                                                comboBox20.DataSource = null;
+                                                comboBox21.DataSource = null;
+                                                comboBox22.DataSource = null;
+                                                comboBox23.DataSource = null;
+                                                comboBox24.DataSource = null;
+                                                comboBox25.DataSource = null;
+                                                comboBox26.DataSource = null;
+                                                comboBox18.DropDownStyle = ComboBoxStyle.DropDownList;
+
+                                                DataSet ds4 = new DataSet();
+                                                SqlDataAdapter _Number_pasport = new SqlDataAdapter("select Number_pasport "
+                                                                                             + " from Person, Specification "
+                                                                                             + " where Person.FK_code_post_Specification = Specification.Post_code_Specification "
+                                                                                             + " group by (Number_pasport)", sql_con);
+                                                _Number_pasport.Fill(ds4, "Number_pasport");
+
+                                                comboBox18.DataSource = ds4.Tables["Number_pasport"].DefaultView;
+                                                comboBox18.ValueMember = ds4.Tables["Number_pasport"].Columns["Number_pasport"].ToString();
+                                                comboBox18.DisplayMember = ds4.Tables["Number_pasport"].Columns["Number_pasport"].ToString();
+                                            }
+                                            else
+                                                if (radioButton9.Checked)
+                                                {
+                                                    comboBox19.Items.Clear();
+                                                    comboBox8.DataSource = null;
+                                                    comboBox12.DataSource = null;
+                                                    comboBox13.DataSource = null;
+                                                    comboBox14.DataSource = null;
+                                                    comboBox15.DataSource = null;
+                                                    comboBox16.DataSource = null;
+                                                    comboBox17.DataSource = null;
+                                                    comboBox18.DataSource = null;
+                                                    comboBox20.DataSource = null;
+                                                    comboBox21.DataSource = null;
+                                                    comboBox22.DataSource = null;
+                                                    comboBox23.DataSource = null;
+                                                    comboBox24.DataSource = null;
+                                                    comboBox25.DataSource = null;
+                                                    comboBox26.DataSource = null;
+                                                    comboBox19.DropDownStyle = ComboBoxStyle.DropDownList;
+
+                                                    comboBox19.Items.Add("Болен");
+                                                    comboBox19.Items.Add("Здоров");
+                                                }
+                                                else
+                                                    if (radioButton10.Checked)
+                                                    {
+                                                        comboBox8.DataSource = null;
+                                                        comboBox12.DataSource = null;
+                                                        comboBox13.DataSource = null;
+                                                        comboBox14.DataSource = null;
+                                                        comboBox15.DataSource = null;
+                                                        comboBox16.DataSource = null;
+                                                        comboBox17.DataSource = null;
+                                                        comboBox18.DataSource = null;
+                                                        comboBox19.DataSource = null;
+                                                        comboBox21.DataSource = null;
+                                                        comboBox22.DataSource = null;
+                                                        comboBox23.DataSource = null;
+                                                        comboBox24.DataSource = null;
+                                                        comboBox25.DataSource = null;
+                                                        comboBox26.DataSource = null;
+                                                        comboBox20.DropDownStyle = ComboBoxStyle.DropDownList;
+
+                                                        DataSet ds4 = new DataSet();
+                                                        SqlDataAdapter _Registration = new SqlDataAdapter("select Registration "
+                                                                                                     + " from Person, Specification "
+                                                                                                     + " where Person.FK_code_post_Specification = Specification.Post_code_Specification "
+                                                                                                     + " group by (Registration)", sql_con);
+                                                        _Registration.Fill(ds4, "Registration");
+
+                                                        comboBox20.DataSource = ds4.Tables["Registration"].DefaultView;
+                                                        comboBox20.ValueMember = ds4.Tables["Registration"].Columns["Registration"].ToString();
+                                                        comboBox20.DisplayMember = ds4.Tables["Registration"].Columns["Registration"].ToString();
+                                                    }
+                                                    else
+                                                        if (radioButton11.Checked)
+                                                        {
+                                                            comboBox8.DataSource = null;
+                                                            comboBox12.DataSource = null;
+                                                            comboBox13.DataSource = null;
+                                                            comboBox14.DataSource = null;
+                                                            comboBox15.DataSource = null;
+                                                            comboBox16.DataSource = null;
+                                                            comboBox17.DataSource = null;
+                                                            comboBox18.DataSource = null;
+                                                            comboBox19.DataSource = null;
+                                                            comboBox20.DataSource = null;
+                                                            comboBox22.DataSource = null;
+                                                            comboBox23.DataSource = null;
+                                                            comboBox24.DataSource = null;
+                                                            comboBox25.DataSource = null;
+                                                            comboBox26.DataSource = null;
+                                                            comboBox21.DropDownStyle = ComboBoxStyle.DropDownList;
+
+                                                            DataSet ds4 = new DataSet();
+                                                            SqlDataAdapter _Staj = new SqlDataAdapter("select Staj "
+                                                                                                         + " from Person, Specification "
+                                                                                                         + " where Person.FK_code_post_Specification = Specification.Post_code_Specification "
+                                                                                                         + " group by (Staj)", sql_con);
+                                                            _Staj.Fill(ds4, "Staj");
+
+                                                            comboBox21.DataSource = ds4.Tables["Staj"].DefaultView;
+                                                            comboBox21.ValueMember = ds4.Tables["Staj"].Columns["Staj"].ToString();
+                                                            comboBox21.DisplayMember = ds4.Tables["Staj"].Columns["Staj"].ToString();
+                                                        }
+                                                        else
+                                                            if (radioButton12.Checked)
+                                                            {
+                                                                comboBox8.DataSource = null;
+                                                                comboBox12.DataSource = null;
+                                                                comboBox13.DataSource = null;
+                                                                comboBox14.DataSource = null;
+                                                                comboBox15.DataSource = null;
+                                                                comboBox16.DataSource = null;
+                                                                comboBox17.DataSource = null;
+                                                                comboBox19.DataSource = null;
+                                                                comboBox18.DataSource = null;
+                                                                comboBox20.DataSource = null;
+                                                                comboBox21.DataSource = null;
+                                                                comboBox23.DataSource = null;
+                                                                comboBox24.DataSource = null;
+                                                                comboBox25.DataSource = null;
+                                                                comboBox26.DataSource = null;
+                                                                comboBox22.DropDownStyle = ComboBoxStyle.DropDownList;
+
+                                                                DataSet ds4 = new DataSet();
+                                                                SqlDataAdapter _Name_specification = new SqlDataAdapter("select Name_specification "
+                                                                                                             + " from Person, Specification "
+                                                                                                             + " where Person.FK_code_post_Specification = Specification.Post_code_Specification "
+                                                                                                             + " group by (Name_specification)", sql_con);
+                                                                _Name_specification.Fill(ds4, "Name_specification");
+
+                                                                comboBox22.DataSource = ds4.Tables["Name_specification"].DefaultView;
+                                                                comboBox22.ValueMember = ds4.Tables["Name_specification"].Columns["Name_specification"].ToString();
+                                                                comboBox22.DisplayMember = ds4.Tables["Name_specification"].Columns["Name_specification"].ToString();
+                                                            }
+                                                            else
+                                                                if (radioButton13.Checked)
+                                                                {
+                                                                    comboBox8.DataSource = null;
+                                                                    comboBox12.DataSource = null;
+                                                                    comboBox13.DataSource = null;
+                                                                    comboBox14.DataSource = null;
+                                                                    comboBox15.DataSource = null;
+                                                                    comboBox16.DataSource = null;
+                                                                    comboBox17.DataSource = null;
+                                                                    comboBox18.DataSource = null;
+                                                                    comboBox19.DataSource = null;
+                                                                    comboBox20.DataSource = null;
+                                                                    comboBox21.DataSource = null;
+                                                                    comboBox22.DataSource = null;
+                                                                    comboBox24.DataSource = null;
+                                                                    comboBox25.DataSource = null;
+                                                                    comboBox26.DataSource = null;
+                                                                    comboBox23.DropDownStyle = ComboBoxStyle.DropDownList;
+             
+
+                                                                    DataSet ds4 = new DataSet();
+                                                                    SqlDataAdapter _Name_street = new SqlDataAdapter("select Name_street "
+                                                                                                                           +" from Street, Lot "
+                                                                                                                           +" where Street.FK_post_code_Lot = Lot.Post_code_Lot "
+                                                                                                                           +" group by(Name_street)", sql_con);
+                                                                    _Name_street.Fill(ds4, "Name_street");
+
+                                                                    comboBox23.DataSource = ds4.Tables["Name_street"].DefaultView;
+                                                                    comboBox23.ValueMember = ds4.Tables["Name_street"].Columns["Name_street"].ToString();
+                                                                    comboBox23.DisplayMember = ds4.Tables["Name_street"].Columns["Name_street"].ToString();
+
+                                                                }
+                                                                else
+                                                                    if (radioButton14.Checked)
+                                                                    {
+                                                                        comboBox8.DataSource = null;
+                                                                        comboBox12.DataSource = null;
+                                                                        comboBox13.DataSource = null;
+                                                                        comboBox14.DataSource = null;
+                                                                        comboBox15.DataSource = null;
+                                                                        comboBox16.DataSource = null;
+                                                                        comboBox17.DataSource = null;
+                                                                        comboBox18.DataSource = null;
+                                                                        comboBox20.DataSource = null;
+                                                                        comboBox21.DataSource = null;
+                                                                        comboBox22.DataSource = null;
+                                                                        comboBox19.DataSource = null;
+                                                                        comboBox23.DataSource = null;
+                                                                        comboBox25.DataSource = null;
+                                                                        comboBox26.DataSource = null;
+                                                                        comboBox24.DropDownStyle = ComboBoxStyle.DropDownList;
+                                                                        
+
+                                                                        DataSet ds4 = new DataSet();
+                                                                        SqlDataAdapter _Number_lot = new SqlDataAdapter("select Number_lot "
+                                                                                                                               + " from Street, Lot "
+                                                                                                                               + " where Street.FK_post_code_Lot = Lot.Post_code_Lot "
+                                                                                                                               + " group by(Number_lot)", sql_con);
+                                                                        _Number_lot.Fill(ds4, "Number_lot");
+
+                                                                        comboBox24.DataSource = ds4.Tables["Number_lot"].DefaultView;
+                                                                        comboBox24.ValueMember = ds4.Tables["Number_lot"].Columns["Number_lot"].ToString();
+                                                                        comboBox24.DisplayMember = ds4.Tables["Number_lot"].Columns["Number_lot"].ToString();
+
+                                                                    }
+            }
+            catch (SqlException ex) { MessageBox.Show(ex.Message, "Ошибка на сервере"); }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Ошибка на клиенте"); }
+        }
+
+        private void comboBox12_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (radioButton1.Checked)
+                {
+                    //наименование должности
+                    dataGridView1.CurrentCell = null;
+                    for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+                    {
+                        dataGridView1.Rows[i].Visible = false;
+                        dataGridView1.Rows[i].Visible = dataGridView1[1, i].Value.ToString() == comboBox8.Text;
+                    }
+                }
+                else
+                    if (radioButton2.Checked)
+                    {
+                        //оклад
+                        dataGridView1.CurrentCell = null;
+                        for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+                        {
+                            dataGridView1.Rows[i].Visible = false;
+                            dataGridView1.Rows[i].Visible = dataGridView1[2, i].Value.ToString() == comboBox12.Text;
+                        }
+                    }
+                    else
+                        if (radioButton3.Checked)
+                        {
+                            //Наименование услуги
+                            dataGridView1.CurrentCell = null;
+                            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+                            {
+                                dataGridView1.Rows[i].Visible = false;
+                                dataGridView1.Rows[i].Visible = dataGridView1[1, i].Value.ToString() == comboBox13.Text;
+                            }
+                        }
+                        else
+                            if (radioButton4.Checked)
+                            {
+                                //Стоимость услуги
+                                dataGridView1.CurrentCell = null;
+                                for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+                                {
+                                    dataGridView1.Rows[i].Visible = false;
+                                    dataGridView1.Rows[i].Visible = dataGridView1[2, i].Value.ToString() == comboBox14.Text;
+                                }
+                            }
+                            else
+                                if (radioButton5.Checked)
+                                {
+                                    //Персонал_фамилия
+                                    dataGridView1.CurrentCell = null;
+                                    for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+                                    {
+                                        dataGridView1.Rows[i].Visible = false;
+                                        dataGridView1.Rows[i].Visible = dataGridView1[1, i].Value.ToString() == comboBox15.Text;
+                                    }
+                                }
+                                else
+                                    if (radioButton6.Checked)
+                                    {
+                                        //Персонал_имя
+                                        dataGridView1.CurrentCell = null;
+                                        for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+                                        {
+                                            dataGridView1.Rows[i].Visible = false;
+                                            dataGridView1.Rows[i].Visible = dataGridView1[2, i].Value.ToString() == comboBox16.Text;
+                                        }
+                                    }
+                                    else
+                                        if (radioButton7.Checked)
+                                        { 
+                                            //персонал_отчество
+                                            dataGridView1.CurrentCell = null;
+                                            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+                                            {
+                                                dataGridView1.Rows[i].Visible = false;
+                                                dataGridView1.Rows[i].Visible = dataGridView1[3, i].Value.ToString() == comboBox17.Text;
+                                            }
+                                        }
+                                        else
+                                            if (radioButton8.Checked)
+                                            { 
+                                                //Персонал_номер паспорта
+                                                dataGridView1.CurrentCell = null;
+                                                for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+                                                {
+                                                    dataGridView1.Rows[i].Visible = false;
+                                                    dataGridView1.Rows[i].Visible = dataGridView1[4, i].Value.ToString() == comboBox18.Text;
+                                                }
+                                            }
+                                            else
+                                                if (radioButton9.Checked)
+                                                {
+                                                    //Статус пациента
+                                                    dataGridView1.CurrentCell = null;
+                                                    for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+                                                    {
+                                                        dataGridView1.Rows[i].Visible = false;
+                                                        dataGridView1.Rows[i].Visible = dataGridView1[6, i].Value.ToString() == comboBox19.Text.ToString();
+                                                    }
+                                                }
+                                                else
+                                                    if (radioButton10.Checked)
+                                                    { 
+                                                        //персонал_прописка
+                                                        dataGridView1.CurrentCell = null;
+                                                        for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+                                                        {
+                                                            dataGridView1.Rows[i].Visible = false;
+                                                            dataGridView1.Rows[i].Visible = dataGridView1[6, i].Value.ToString() == comboBox20.Text;
+                                                        }
+                                                    }
+                                                    else
+                                                        if (radioButton11.Checked)
+                                                        { 
+                                                            //персонал_стаж
+                                                            dataGridView1.CurrentCell = null;
+                                                            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+                                                            {
+                                                                dataGridView1.Rows[i].Visible = false;
+                                                                dataGridView1.Rows[i].Visible = dataGridView1[7, i].Value.ToString() == comboBox21.Text;
+                                                            }
+                                                        }
+                                                        else
+                                                            if (radioButton12.Checked)
+                                                            { 
+                                                                //персонал_специализация
+                                                                dataGridView1.CurrentCell = null;
+                                                                for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+                                                                {
+                                                                    dataGridView1.Rows[i].Visible = false;
+                                                                    dataGridView1.Rows[i].Visible = dataGridView1[8, i].Value.ToString() == comboBox22.Text;
+                                                                }
+                                                            }
+                                                            else
+                                                                if (radioButton13.Checked)
+                                                                { 
+                                                                    //Улицы_наименование 
+                                                                    dataGridView1.CurrentCell = null;
+                                                                    for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+                                                                    {
+                                                                        dataGridView1.Rows[i].Visible = false;
+                                                                        dataGridView1.Rows[i].Visible = dataGridView1[1, i].Value.ToString() == comboBox23.Text;
+                                                                    }
+                                                                }
+                                                                else
+                                                                    if (radioButton14.Checked)
+                                                                    {
+                                                                        //Улицы_участок 
+                                                                        dataGridView1.CurrentCell = null;
+                                                                        for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+                                                                        {
+                                                                            dataGridView1.Rows[i].Visible = false;
+                                                                            dataGridView1.Rows[i].Visible = dataGridView1[2, i].Value.ToString() == comboBox24.Text;
+                                                                        }
+                                                                    }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void картаПоциентаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cart_Patient f15 = new Cart_Patient(sql_con);
+            f15.Show();
+        }
+
+        private void диагнозToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Diagnosis f16 = new Diagnosis(sql_con);
+            f16.Show();
+        }
+
+        private void картыПациентовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            radioButton1.Checked = false;
+            radioButton2.Checked = false;
+            radioButton3.Checked = false;
+            radioButton4.Checked = false;
+            radioButton5.Checked = false;
+            radioButton6.Checked = false;
+            radioButton7.Checked = false;
+            radioButton8.Checked = false;
+            radioButton9.Checked = false;
+            radioButton10.Checked = false;
+            radioButton11.Checked = false;
+            radioButton12.Checked = false;
+            radioButton13.Checked = false;
+            radioButton14.Checked = false;
+            checkBox1.Checked = false;
+            checkBox2.Checked = false;
+            checkBox3.Checked = false;
+            checkBox4.Checked = false;
+            checkBox5.Checked = false;
+            comboBox1.DataSource = null;
+            comboBox2.DataSource = null;
+            comboBox3.DataSource = null;
+            comboBox4.DataSource = null;
+            comboBox5.DataSource = null;
+            comboBox6.DataSource = null;
+            comboBox7.DataSource = null;
+            comboBox8.DataSource = null;
+            comboBox9.DataSource = null;
+            comboBox10.DataSource = null;
+            comboBox11.DataSource = null;
+            comboBox12.DataSource = null;
+            comboBox13.DataSource = null;
+            comboBox14.DataSource = null;
+            comboBox15.DataSource = null;
+            comboBox16.DataSource = null;
+            comboBox17.DataSource = null;
+            comboBox18.DataSource = null;
+            comboBox19.DataSource = null;
+            comboBox20.DataSource = null;
+            comboBox21.DataSource = null;
+            comboBox22.DataSource = null;
+            comboBox23.DataSource = null;
+            comboBox24.DataSource = null;
+            try
+            {
+                tabPage1.Parent = null;
+                tabPage2.Parent = null;
+                tabPage3.Parent = null;
+                tabPage4.Parent = null;
+                tabPage5.Parent = null;
+                tabPage6.Parent = null;
+                tabPage7.Parent = null;
+                tabPage8.Parent = null;
+                tabPage9.Parent = null;
+                tabPage10.Parent = null;
+                tabPage11.Parent = null;
+                tabPage12.Parent = null;
+                tabPage13.Parent = null;
+                DataSet Cart_Patient = new DataSet("Cart_Patient");
+                SqlDataAdapter _Cart_Patient_adapter;
+                _Cart_Patient_adapter = new SqlDataAdapter("Select Post_code_Cart_Patient as [№], Patient.Surname as [Фамилия Пациента], Patient.Name as [Имя Пациента], Street.Name_street as [Улица],Specification.Name_specification as [Специалист], Procedure_status as [Статус процедуры], Name_procederr as [Процедура], Resept as [Рецепт], Date_of_write as [Дата обследования],  Diagnosis.Name_Diagnos as [Диагноз] from Cart_Patient,Diagnosis,Patient,Street,Specification where Cart_Patient.FK_post_code_Diagnosis = Diagnosis.Post_code_Diagnosis AND Diagnosis.FK_post_code_Specification = Specification.Post_code_Specification AND Cart_Patient.FK_post_code_Patient = Patient.Post_code_Patient AND Patient.FK_post_code_Street = Street.Post_code_Street", sql_con);
+                _Cart_Patient_adapter.Fill(Cart_Patient, "Карта пациента");
+                dataGridView1.DataSource = Cart_Patient.Tables["Карта пациента"];
+                this.dataGridView1.Columns["№"].Visible = false;
+            }
+            catch (SqlException ex)
+            { MessageBox.Show(ex.Message, "Ошибка на сервере"); }
+        }
+
+        private void диагнозыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            radioButton1.Checked = false;
+            radioButton2.Checked = false;
+            radioButton3.Checked = false;
+            radioButton4.Checked = false;
+            radioButton5.Checked = false;
+            radioButton6.Checked = false;
+            radioButton7.Checked = false;
+            radioButton8.Checked = false;
+            radioButton9.Checked = false;
+            radioButton10.Checked = false;
+            radioButton11.Checked = false;
+            radioButton12.Checked = false;
+            radioButton13.Checked = false;
+            radioButton14.Checked = false;
+            checkBox1.Checked = false;
+            checkBox2.Checked = false;
+            checkBox3.Checked = false;
+            checkBox4.Checked = false;
+            checkBox5.Checked = false;
+            comboBox1.DataSource = null;
+            comboBox2.DataSource = null;
+            comboBox3.DataSource = null;
+            comboBox4.DataSource = null;
+            comboBox5.DataSource = null;
+            comboBox6.DataSource = null;
+            comboBox7.DataSource = null;
+            comboBox8.DataSource = null;
+            comboBox9.DataSource = null;
+            comboBox10.DataSource = null;
+            comboBox11.DataSource = null;
+            comboBox12.DataSource = null;
+            comboBox13.DataSource = null;
+            comboBox14.DataSource = null;
+            comboBox15.DataSource = null;
+            comboBox16.DataSource = null;
+            comboBox17.DataSource = null;
+            comboBox18.DataSource = null;
+            comboBox19.DataSource = null;
+            comboBox20.DataSource = null;
+            comboBox21.DataSource = null;
+            comboBox22.DataSource = null;
+            comboBox23.DataSource = null;
+            comboBox24.DataSource = null;
+            comboBox25.DataSource = null;
+            comboBox26.DataSource = null;
+            try
+            {
+                tabPage1.Parent = null;
+                tabPage2.Parent = null;
+                tabPage3.Parent = null;
+                tabPage4.Parent = null;
+                tabPage5.Parent = null;
+                tabPage6.Parent = null;
+                tabPage7.Parent = null;
+                tabPage8.Parent = null;
+                tabPage9.Parent = null;
+                tabPage10.Parent = null;
+                tabPage11.Parent = null;
+                tabPage12.Parent = null;
+                tabPage13.Parent = null;
+                DataSet Diagnosis = new DataSet("Diagnosis");
+                SqlDataAdapter _Diagnosis_adapter;
+                _Diagnosis_adapter = new SqlDataAdapter("Select Diagnosis.Post_code_Diagnosis as [№], Diagnosis.Name_Diagnos as [Название диагноза], Specification.Name_specification as [Специальность] from Diagnosis, Specification where Diagnosis.FK_post_code_Specification = Specification.Post_code_Specification", sql_con);
+                _Diagnosis_adapter.Fill(Diagnosis, "Диагноз");
+                dataGridView1.DataSource = Diagnosis.Tables["Диагноз"];
+                this.dataGridView1.Columns["№"].Visible = false;
+            }
+            catch (SqlException ex)
+            { MessageBox.Show(ex.Message, "Ошибка на сервере"); }
+        }
+
+        private void tabControl2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button22_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox25_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void списокВрачейToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form2 f22 = new Form2(sql_con);
+            f22.Show();
+        }
+
+        private void врачиПринятыеЗаМесяцToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form3 f23 = new Form3(sql_con);
+            f23.Show();
+        }
+
+        private void пациентИСписокДиагнозовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form4 f24 = new Form4(sql_con);
+            f24.Show();
+        }
+
+        private void выручкаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form6 f25 = new Form6(sql_con);
+            f25.Show();
+        }
+
+        private void времяПриемаВрачейToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form5 f26 = new Form5(sql_con);
+            f26.Show();
+        }
+
+        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form7 f27 = new Form7(sql_con);
+            f27.Show();
+        }
+
+        private void должностиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button25_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int current = 0;
+                SqlCommand cmd1 = new SqlCommand("Delete_Reception", sql_con);
+                cmd1.CommandType = CommandType.StoredProcedure;
+                cmd1.Parameters.AddWithValue("@Post_code_Reception", dataGridView1.Rows[current].Cells["№"].Value.ToString());
+                cmd1.ExecuteNonQuery();
+
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на сервере");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка на клиенте");
+            }
+            
+        }
+
+
+    }
+}
