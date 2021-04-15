@@ -1,0 +1,64 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Text.RegularExpressions;
+
+namespace Petrovich
+{
+    public partial class add_Position : Form
+    {
+        SqlConnection sql_con;
+        public add_Position(SqlConnection _sql_con)
+        {
+            InitializeComponent();
+            sql_con = _sql_con;
+        }
+
+        private void add_Position_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int i = 0;
+                SqlCommand cmd = new SqlCommand("add_position", sql_con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                if (Regex.Match(textBox1.Text, "^[А-Я][а-я]*$").Success == false)
+                { MessageBox.Show("Некоректно введено наименование должности", "Ошибка"); }
+                else { i++; cmd.Parameters.AddWithValue("@Job_title", textBox1.Text); }
+
+                if (Regex.Match(textBox2.Text, "^[0-9]*$").Success == false)
+                { 
+                    MessageBox.Show("Некоректно введен оклад", "Ошибка"); 
+                }
+                else 
+                { 
+                    i++;   
+                    cmd.Parameters.AddWithValue("@Salary", textBox2.Text); 
+                }
+
+                if (i == 2)
+                {
+                    cmd.ExecuteNonQuery();
+                    Close();
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Ошибка"); }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+    }
+}
